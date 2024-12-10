@@ -1,0 +1,24 @@
+#ifndef CUSTOMEDSLIDER_H
+#define CUSTOMEDSLIDER_H
+
+#include <QSlider>
+#include <QLabel>
+#include <QMouseEvent>
+class CustomedSlider : public QSlider
+{
+public:
+    CustomedSlider(QWidget *parent=0);
+    ~CustomedSlider();
+protected:
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void mouseReleasement(QMouseEvent *event);
+    virtual void mouseMoveEvent(QMouseEvent *event);
+private:
+    QLabel
+    
+    
+    
+};
+
+
+#endif // CUSTOMEDSLIDER_H
