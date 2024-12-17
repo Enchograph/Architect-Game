@@ -4,7 +4,7 @@
 #include <QDialog>
 
 namespace Ui {
-class Dialog; // 注意这里的类名要与 .ui 文件一致
+class Dialog;
 }
 
 class gridSizeDialog : public QDialog
@@ -15,7 +15,6 @@ public:
     explicit gridSizeDialog(QWidget *parent = nullptr);
     ~gridSizeDialog();
 
-    // 获取选择的棋盘路数
     int getGridSize() const;
 
 private slots:
@@ -24,7 +23,7 @@ private slots:
     void on_horizontalSlider_valueChanged(int value);
 
 private:
-    Ui::Dialog *ui; // 注意这里也是 Dialog
+    Ui::Dialog *ui;
 };
 
 #endif // GRIDSIZEDIALOG_H

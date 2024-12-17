@@ -4,6 +4,8 @@
 #include <QWidget>
 #include "game.h"
 #include <QPixmap> // 用于加载图片
+#include <QTimer>  // 引入QTimer头文件
+
 
 class gameBoard : public QWidget
 {
@@ -24,6 +26,7 @@ private:
 
     int size;           // 尺寸
     void updateSizes(); // 更新方格和边的大小
+
 
     // 图片
     QPixmap squareEmptyPixmap;
