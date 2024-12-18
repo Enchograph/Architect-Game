@@ -37,13 +37,19 @@ MainWindow::MainWindow(QWidget *parent)
 
     currentUser=NULL;
 
-    QMovie *preservationMovie = new QMovie(":/new/prefix1/resources/Preservation.gif");
+    //    QMovie *preservationMovie = new QMovie(":/new/prefix1/resources/Preservation.gif");
 
-    QSize si(ui->preservationLabel->width(),ui->preservationLabel->height());
-    preservationMovie->setScaledSize(si);
+    //    QSize si(ui->preservationLabel->width(),ui->preservationLabel->height());
+    //    preservationMovie->setScaledSize(si);
 
-        ui->preservationLabel->setMovie(preservationMovie);
-        preservationMovie->start();
+    //        ui->preservationLabel->setMovie(preservationMovie);
+    //        preservationMovie->start();
+
+        QPixmap *preservationMovie = new QPixmap(":/new/prefix1/resources/Preservation.png");
+            QSize si(ui->preservationLabel->width(),ui->preservationLabel->height());
+            * preservationMovie=preservationMovie->scaled(si);
+
+            ui->preservationLabel->setPixmap(*preservationMovie);
 
     // 设置默认显示的页面为 beginPage
     ui->contentPage->setCurrentWidget(ui->beginPage);
