@@ -7,5 +7,8 @@
         <file>resources/OrangeInside.png</file>
         <file>resources/WhiteEdge.png</file>
         <file>resources/WhiteInside.png</file>
+        <file>resources/Preservation.gif</file>
+        <file>resources/Preservation.png</file>
+        <file>resources/Preservation.mp4</file>
     </qresource>
 </RCC>

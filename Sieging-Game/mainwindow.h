@@ -25,6 +25,7 @@ private slots:
     void on_mainPageBtn_clicked();
     void on_loginBtn_clicked();
     void on_settingsBtn_clicked();
+    void on_aboutBtn_clicked();
     void on_pushButton_16_clicked();
     void on_pushButton_17_clicked();
     void on_pushButton_18_clicked();

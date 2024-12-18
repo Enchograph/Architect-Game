@@ -10,6 +10,7 @@
 
 #include "userManager.h"
 #include <QMessageBox>
+#include <QMovie>
 
 #include <iostream>
 #include <QDebug>
@@ -36,6 +37,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     currentUser=NULL;
 
+    QMovie *preservationMovie = new QMovie(":/new/prefix1/resources/Preservation.gif");
+
+    QSize si(ui->preservationLabel->width(),ui->preservationLabel->height());
+    preservationMovie->setScaledSize(si);
+
+        ui->preservationLabel->setMovie(preservationMovie);
+        preservationMovie->start();
+
     // 设置默认显示的页面为 beginPage
     ui->contentPage->setCurrentWidget(ui->beginPage);
 
@@ -50,13 +59,14 @@ MainWindow::MainWindow(QWidget *parent)
     connect(dialog11, &gridSizeDialog::accepted, this, [this]() { openGamePage(dialog11 ,InitialState::human, Difficulty::simple); });
     connect(dialog12, &gridSizeDialog::accepted, this, [this]() { openGamePage(dialog12 ,InitialState::human, Difficulty::medium); });
     connect(dialog13, &gridSizeDialog::accepted, this, [this]() { openGamePage(dialog13 ,InitialState::human, Difficulty::hard); });
-    connect(dialog21, &gridSizeDialog::accepted, this, [this]() { openGamePage(dialog21 ,InitialState::player1, Difficulty::simple); });
-    connect(dialog22, &gridSizeDialog::accepted, this, [this]() { openGamePage(dialog22 ,InitialState::player1, Difficulty::medium); });
-    connect(dialog23, &gridSizeDialog::accepted, this, [this]() { openGamePage(dialog23 ,InitialState::player1, Difficulty::hard); });
+    connect(dialog21, &gridSizeDialog::accepted, this, [this]() { openGamePage(dialog21 ,InitialState::player1, Difficulty::medium); });
 
 
        // 初始化 gamePage，后续添加 gameBoard
        ui->gamePage->setLayout(new QVBoxLayout);
+
+
+
 }
 
 MainWindow::~MainWindow()
@@ -96,6 +106,7 @@ void MainWindow::switchPage(QWidget *targetPage)
 
         int direction = getPageIndex(targetPage) < getPageIndex(currentPage) ? 1 : -1;
 
+
         // 设置隐藏当前页面的动画
         hideAnim->setDuration(500);
         hideAnim->setEasingCurve(QEasingCurve::Linear);
@@ -133,6 +144,7 @@ void MainWindow::on_vsPeopleBtn_clicked() { switchPage(ui->vsPeoplePage); }
 void MainWindow::on_mainPageBtn_clicked() { switchPage(ui->beginPage); }
 void MainWindow::on_loginBtn_clicked() { switchPage(ui->loginPage); }
 void MainWindow::on_settingsBtn_clicked() { switchPage(ui->settingPage); }
+void MainWindow::on_aboutBtn_clicked() { switchPage(ui->aboutPage); }
 
 void MainWindow::on_pushButton_16_clicked(){ dialog11->exec(); }
 void MainWindow::on_pushButton_17_clicked(){ dialog12->exec(); }
@@ -218,6 +230,8 @@ void MainWindow::setupConnections() {
         if(loginSuccessfully)
         {
                         QMessageBox::information(this, "登录", "登录成功！");
+                        ui->userNameLabel->setText("用户名：" + currentUser->currentUserName);
+                        ui->UIDLabel->setText("UID：" + currentUser->currentUid);
                         goToAccountPage();
         }
         else {
