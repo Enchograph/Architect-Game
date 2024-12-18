@@ -72,6 +72,7 @@ void MainWindow::openGamePage(const gridSizeDialog * gridDialog,InitialState ini
 
 void MainWindow::switchPage(QWidget *targetPage)
 {
+
     if (ui->contentPage->currentWidget() != targetPage) {
         int pageHeight = ui->contentPage->height();
         QWidget *currentPage = ui->contentPage->currentWidget();

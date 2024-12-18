@@ -62,8 +62,32 @@ Game::Game(int width1, int height1, InitialState initialState1, Difficulty diffi
 
 void Game::selectEdge(int x, int y, Color player)
 {
-    edgeSituation[x][y].isSelected = true;
-    // 这里再插一个边变色代码
+    edgeSituation[x][y].color = player;
+
+    for (int x1 = 0; x1 < 2 * height - 1; x1++) // 遍历每一条边
+    {
+        if (x1 % 2 == 0) // 横线
+        {
+            for (int y1 = 0; y1 < width - 1; y1++)
+            {
+                if (edgeSituation[x1][y1].color!=white)
+                {
+                    edgeSituation[x1][y1].turnsAfterSelected++;
+                }
+            }
+        }
+        if (x1 % 2 == 1) // 竖线
+        {
+            for (int y1 = 0; y1 < width; y1++)
+            {
+                if (edgeSituation[x1][y1].color!=white)
+                {
+                    edgeSituation[x1][y1].turnsAfterSelected++;
+                }
+            }
+        }
+    }
+
     checkCell(x, y, player);
 }
 /*
@@ -249,7 +273,7 @@ int Game::countPlayerCells(Color player) const
     return count;
 }
 
-void Game::gameOver()
+void Game::gameOver() // ! 这里需要完善游戏结束逻辑
 {
     if (countPlayerCells(blue) > countPlayerCells(orange))
     {

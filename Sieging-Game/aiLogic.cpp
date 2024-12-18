@@ -37,7 +37,7 @@ Edge *Game::simpleAiLogic()
             randomX = rand() % height;
             randomX *= 2;
             randomY = rand() % (width - 1);
-            if (edgeSituation[randomX][randomY].isSelected == false)
+            if (edgeSituation[randomX][randomY].color==white)
             {
                 cout<<"ai "<<"random: "<<randomX<<randomY<<endl;
                 return &edgeSituation[randomX][randomY];
@@ -48,7 +48,7 @@ Edge *Game::simpleAiLogic()
             randomX = rand() % (height - 1);
             randomX = randomX * 2 + 1;
             randomY = rand() % width;
-            if (edgeSituation[randomX][randomY].isSelected == false)
+            if (edgeSituation[randomX][randomY].color==white)
             {
                 cout<<"ai "<<"random: "<<randomX<<randomY<<endl;
                 return &edgeSituation[randomX][randomY];
@@ -61,7 +61,7 @@ Edge *Game::simpleAiLogic()
             {
                 for (int y1 = 0; y1 < width - 1; y1++)
                 {
-                    if (edgeSituation[x1][y1].isSelected == false)
+                    if (edgeSituation[x1][y1].color==white)
                     {
                         cout<<"ai "<<"traverse: "<<x1<<y1<<endl;
                         return &edgeSituation[x1][y1];
@@ -72,7 +72,7 @@ Edge *Game::simpleAiLogic()
             {
                 for (int y1 = 0; y1 < width; y1++)
                 {
-                    if (edgeSituation[x1][y1].isSelected == false)
+                    if (edgeSituation[x1][y1].color==white)
                     {
                         cout<<"ai "<<"traverse: "<<x1<<y1<<endl;
                         return &edgeSituation[x1][y1];
@@ -90,68 +90,16 @@ Edge *Game::mediumAiLogic()
     {
         for (int y1 = 0; y1 < width - 1; y1++)
         {
-            if (cellSituation[x1][y1].unselectedEdgesLeft() != NULL)
+            if (cellSituation[x1][y1].unselectedEdge().theEdgeLefted != NULL)
             {
                 cout<<"ai "<<"strategy: "<<x1<<y1<<endl;
-                return cellSituation[x1][y1].unselectedEdgesLeft();
+                return cellSituation[x1][y1].unselectedEdge().theEdgeLefted;
             }
         }
     }
-    // 找不到就随机
-    srand(static_cast<unsigned int>(time(0))); // 设置随机数种子
-    int randomX, randomY;
-    for (int z = 0; z < 10; z++)
-    {
-        if (rand() % 2 == 0)
-        {
-            randomX = rand() % height;
-            randomX *= 2;
-            randomY = rand() % (width - 1);
-            if (edgeSituation[randomX][randomY].isSelected == false)
-            {
-                cout<<"ai "<<"random: "<<randomX<<randomY<<endl;
-                return &edgeSituation[randomX][randomY];
-            }
-        }
-        else
-        {
-            randomX = rand() % (height - 1);
-            randomX = randomX * 2 + 1;
-            randomY = rand() % width;
-            if (edgeSituation[randomX][randomY].isSelected == false)
-            {
-                cout<<"ai "<<"random: "<<randomX<<randomY<<endl;
-                return &edgeSituation[randomX][randomY];
-            }
-        }
-    }
-    for (int x1 = 0; x1 < 2 * height - 1; x1++) // 太非了就遍历每一条边
-        {
-            if (x1 % 2 == 0) // 横线
-            {
-                for (int y1 = 0; y1 < width - 1; y1++)
-                {
-                    if (edgeSituation[x1][y1].isSelected == false)
-                    {
-                        cout<<"ai "<<"traverse: "<<x1<<y1<<endl;
-                        return &edgeSituation[x1][y1];
-                    }
-                }
-            }
-            if (x1 % 2 == 1) // 竖线
-            {
-                for (int y1 = 0; y1 < width; y1++)
-                {
-                    if (edgeSituation[x1][y1].isSelected == false)
-                    {
-                        cout<<"ai "<<"traverse: "<<x1<<y1<<endl;
-                        return &edgeSituation[x1][y1];
-                    }
-                }
-            }
-        }
-    cout << "mediumAiLogic Error!" << endl;
-    return NULL;
+
+    //找不到就随机、遍历。
+    return simpleAiLogic();
 }
 
 Edge *Game::hardAiLogic()

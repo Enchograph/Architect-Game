@@ -6,8 +6,8 @@ gridSizeDialog::gridSizeDialog(QWidget *parent) :
     ui(new Ui::Dialog)
 {
     ui->setupUi(this);
-    ui->horizontalSlider->setRange(5, 20); // 假设棋盘路数在5到20之间
-    ui->horizontalSlider->setValue(10); // 默认值为10
+    ui->horizontalSlider->setRange(5, 20); // 令棋盘路数在5到20之间
+    ui->horizontalSlider->setValue(7); // 默认值为7
     ui->label->setText("请选择棋盘路数: " + QString::number(ui->horizontalSlider->value()));
 }
 

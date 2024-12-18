@@ -25,7 +25,7 @@ private:
     void loadImages(); // 加载图片
 
     int size;           // 尺寸
-    void updateSizes(); // 更新方格和边的大小
+    double updateSizes(); // 更新方格和边的大小
 
 
     // 图片
@@ -33,8 +33,10 @@ private:
     QPixmap squareBluePixmap;
     QPixmap squareOrangePixmap;
     QPixmap squareBlackPixmap;
-    QPixmap edgeUnselectedPixmap;
-    QPixmap edgeSelectedPixmap;
+    QPixmap edgeWhitePixmap;
+    QPixmap edgeBlackPixmap;
+    QPixmap edgeBluePixmap;
+    QPixmap edgeOrangePixmap;
 
     void drawGameBoard(QPainter &painter); // 绘制整个游戏棋盘
     void drawEdges(QPainter &painter);     // 绘制边

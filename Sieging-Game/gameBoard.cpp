@@ -24,34 +24,34 @@ gameBoard::~gameBoard() = default;
 
 void gameBoard::loadImages()
 {
-    // 加载PNG图片（这些图片需要事先准备好并通过资源文件管理）
+    // 加载PNG图片
     squareEmptyPixmap = QPixmap(":/new/prefix1/resources/WhiteInside.png");
     squareBluePixmap = QPixmap(":/new/prefix1/resources/BlueInside.png");
     squareOrangePixmap = QPixmap(":/new/prefix1/resources/OrangeInside.png");
-    edgeUnselectedPixmap = QPixmap(":/new/prefix1/resources/WhiteEdge.png");
-    edgeSelectedPixmap = QPixmap(":/new/prefix1/resources/BlackEdge.png");
+    edgeWhitePixmap = QPixmap(":/new/prefix1/resources/WhiteEdge.png");
+    edgeBlackPixmap = QPixmap(":/new/prefix1/resources/BlackEdge.png");
+    edgeBluePixmap = QPixmap(":/new/prefix1/resources/BlueEdge.png");
+    edgeOrangePixmap = QPixmap(":/new/prefix1/resources/OrangeEdge.png");
 }
 
 void gameBoard::resizeEvent(QResizeEvent *event)
 {
-    // 获取父窗口的较短边长度
-    int newSize = qMin(width(), height());
+    setGeometry((parentWidget()->width() - updateSizes()*(5 * game->getWidth() + 1)) / 2, (parentWidget()->height() - updateSizes()*(5 * game->getHeight() + 1)) / 2, parentWidget()->width(),parentWidget()->height());
+    //setGeometry(0,0, width(),height());
 
-    // 设置新的游戏板大小
-    setFixedSize(newSize, newSize); // 使其保持正方形
 
-    // 更新方格和边的大小
-    updateSizes();
 
-    // 调用父类的resizeEvent
-    QWidget::resizeEvent(event);
+     // 更新棋盘内元素的大小
+    update();      // 触发重新绘制
+    QWidget::resizeEvent(event); // 调用父类处理
 }
 
-void gameBoard::updateSizes()
+double gameBoard::updateSizes()
 {
     double w = width() / (5 * game->getWidth() + 1);
     double h = height() / (5 * game->getHeight() + 1);
     w > h ? size = h : size = w;
+    return size;
 }
 
 void gameBoard::paintEvent(QPaintEvent *event)
@@ -82,8 +82,24 @@ void gameBoard::drawEdges(QPainter &painter)
             {
                 Edge &edge = game->getEdge(x1, y1);
 
-                // 根据边的选择状态绘制不同的边图片
-                QPixmap edgePixmap = edge.isSelected ? edgeSelectedPixmap : edgeUnselectedPixmap;
+                QPixmap edgePixmap;  // = edge.isSelected ? edgeSelectedPixmap : edgeUnselectedPixmap;
+
+                if(edge.color==white)
+                {
+                    edgePixmap = edgeWhitePixmap;
+                }
+                else if (edge.color==blue && edge.turnsAfterSelected==1)
+                {
+                    edgePixmap = edgeBluePixmap;
+                }
+                else if (edge.color==orange && edge.turnsAfterSelected==1)
+                {
+                    edgePixmap = edgeOrangePixmap;
+                }
+                else
+                {
+                    edgePixmap = edgeBlackPixmap;
+                }
 
                 QTransform transform;
                 transform.rotate(90);                                      // 旋转图片 90 度
@@ -99,8 +115,25 @@ void gameBoard::drawEdges(QPainter &painter)
             {
                 Edge &edge = game->getEdge(x1, y1);
 
-                // 根据边的选择状态绘制不同的边图片
-                QPixmap edgePixmap = edge.isSelected ? edgeSelectedPixmap : edgeUnselectedPixmap;
+                QPixmap edgePixmap;  // = edge.isSelected ? edgeSelectedPixmap : edgeUnselectedPixmap;
+
+                if(edge.color==white)
+                {
+                    edgePixmap = edgeWhitePixmap;
+                }
+                else if (edge.color==blue && edge.turnsAfterSelected==1)
+                {
+                    edgePixmap = edgeBluePixmap;
+                }
+                else if (edge.color==orange && edge.turnsAfterSelected==1)
+                {
+                    edgePixmap = edgeOrangePixmap;
+                }
+                else
+                {
+                    edgePixmap = edgeBlackPixmap;
+                }
+
 
                 painter.drawPixmap(y1 * 5 * size, (x1 - 1) / 2 * 5 * size + size, size, 4 * size, edgePixmap);
             }
@@ -146,7 +179,6 @@ void gameBoard::mousePressEvent(QMouseEvent *event)
 {
     // updateSizes();
 
-    // 根据鼠标点击的位置和方格大小来计算点击的行列
     int y = ceil(event->y() / (5 * size) - 0.1); // 根据点击的 Y 坐标确定行
     int x = ceil(event->x() / (5 * size) - 0.1); // 根据点击的 X 坐标确定列
     // 暂时还不清楚这里用向上取整反而能跑通的原因，稍后详加分析。
@@ -191,7 +223,7 @@ void gameBoard::mousePressEvent(QMouseEvent *event)
         return;
     }
     cout <<" 鼠标："<< event->x() << " " << event->y()<<" "<<"格子("<< x <<","<< y << ")"  << endl;
-    if(game->getEdge(resX, resY).isSelected)return;
+    if(game->getEdge(resX, resY).color!=white)return;
 
     switch(game->getInitialState())
     {

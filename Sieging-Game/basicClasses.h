@@ -25,9 +25,16 @@ enum Difficulty
 
 struct Edge
 {
-    bool isSelected = false;
     int x;
     int y;
+    Color color=white;
+    int turnsAfterSelected=0;
+};
+
+struct UnselectedEdge
+{
+    Edge * theEdgeLefted;
+    int num;
 };
 
 class Cell
@@ -46,7 +53,7 @@ public:
     Cell(Edge *topE, Edge *leftE, Edge *rightE, Edge *bottomE, int x1, int y1);
     Cell();
     bool check(Color player);
-    Edge *unselectedEdgesLeft();
+    UnselectedEdge unselectedEdge();
 };
 
 struct Coordinates

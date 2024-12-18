@@ -222,7 +222,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="beginPage">
        <property name="styleSheet">
@@ -611,7 +611,14 @@
         </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="gamePage"/>
+      <widget class="QWidget" name="gamePage">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
      </widget>
     </item>
    </layout>
