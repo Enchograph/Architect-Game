@@ -37,6 +37,7 @@ private:
     void switchPage(QWidget *targetPage); // 页面切换函数
     int getPageIndex(QWidget *page); // 获取页面的索引
 
+
     Game *game;
     gameBoard *board;
 
@@ -51,6 +52,14 @@ private:
     gridSizeDialog * dialog21;
     gridSizeDialog * dialog22;
     gridSizeDialog * dialog23;
+
+   UserInformation * currentUser;
+   UserInformation acturalCurrentUser;
+
+
+   void goToAccountPage();
+
+        void setupConnections(); // 设置信号与槽
 
 };
 

@@ -23,7 +23,8 @@ SOURCES += \
     gridSizeDialog.cpp \
     main.cpp \
     mainwindow.cpp \
-    sleepFuction.cpp
+    sleepFuction.cpp \
+    userManager.cpp
 
 HEADERS += \
     basicClasses.h \
@@ -31,7 +32,8 @@ HEADERS += \
     gameBoard.h \
     gridSizeDialog.h \
     mainwindow.h \
-    sleepFuction.h
+    sleepFuction.h \
+    userManager.h
 
 FORMS += \
     gridSizeDialog.ui \

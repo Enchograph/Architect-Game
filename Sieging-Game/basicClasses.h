@@ -1,6 +1,16 @@
 #ifndef BASICCLASSES_H
 #define BASICCLASSES_H
 
+#include <QString>
+
+struct UserInformation {
+    QString currentUserName;
+    QString currentUid;
+    int currentWinNum;
+    int currentLoseNum;
+    int currentDrawNum;
+};
+
 enum Color
 {
     white,

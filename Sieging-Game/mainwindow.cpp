@@ -8,6 +8,17 @@
 #include "game.h"
 #include "gameBoard.h"
 
+#include "userManager.h"
+#include <QMessageBox>
+
+#include <iostream>
+#include <QDebug>
+
+#include <QThread>
+
+using std::cout;
+using std::endl;
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow),
@@ -20,6 +31,10 @@ MainWindow::MainWindow(QWidget *parent)
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect screenGeometry = screen->geometry();
     this->resize(screenGeometry.width() * 0.7, screenGeometry.height() * 0.7);
+
+    setupConnections();
+
+    currentUser=NULL;
 
     // 设置默认显示的页面为 beginPage
     ui->contentPage->setCurrentWidget(ui->beginPage);
@@ -125,3 +140,92 @@ void MainWindow::on_pushButton_18_clicked(){ dialog13->exec(); }
 void MainWindow::on_pushButton_19_clicked(){ dialog21->exec(); }
 void MainWindow::on_pushButton_20_clicked(){ dialog22->exec(); }
 void MainWindow::on_pushButton_21_clicked(){ dialog23->exec(); }
+
+
+
+
+void MainWindow::goToAccountPage()
+{
+    if (currentUser) {
+        ui->accountInfoLabel->setText("用户名：" + currentUser->currentUserName +
+                                      "\nUID：" + currentUser->currentUid +
+                                      "\n胜利场数：" + QString::number(currentUser->currentWinNum) +
+                                      "\n失败场数：" + QString::number(currentUser->currentLoseNum) +
+                                      "\n平局次数：" + QString::number(currentUser->currentDrawNum));
+    } else {
+        ui->accountInfoLabel->setText("未登录");
+    }
+    ui->stackedWidget->setCurrentWidget(ui->accountSettingsPage);
+}
+
+
+
+void MainWindow::setupConnections() {
+    // 页面切换逻辑
+    connect(ui->loginButton, &QPushButton::clicked, [&]() {
+        ui->stackedWidget->setCurrentWidget(ui->innerLoginPage);
+    });
+
+    connect(ui->registerButton, &QPushButton::clicked, [&]() {
+        ui->stackedWidget->setCurrentWidget(ui->registerPage);
+    });
+
+    connect(ui->accountSettingsButton, &QPushButton::clicked, [&]() {
+        goToAccountPage();
+    });
+
+    // 返回账户页面
+    connect(ui->backToMenuButtonFromLogin, &QPushButton::clicked, [&]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainMenuPage);
+    });
+
+    connect(ui->backToMenuButtonFromRegister, &QPushButton::clicked, [&]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainMenuPage);
+    });
+
+    connect(ui->backToMenuButtonFromAccount, &QPushButton::clicked, [&]() {
+        ui->stackedWidget->setCurrentWidget(ui->mainMenuPage);
+    });
+
+    // 注册功能
+    connect(ui->confirmRegisterButton, &QPushButton::clicked, [&]() {
+        QString username = ui->newUsernameInput->text();
+        QString password = ui->newPasswordInput->text();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            QMessageBox::warning(this, "注册", "请填写所有输入框。");
+            return;
+        }
+
+        if (UserManager::isUsernameTaken(username)) {
+            QMessageBox::warning(this, "注册", "用户名已存在！");
+            return;
+        }
+
+        UserManager::registerUser(username, password);
+        QMessageBox::information(this, "注册", "注册成功！");
+        ui->stackedWidget->setCurrentWidget(ui->innerLoginPage);
+    });
+
+    // 登录功能
+    connect(ui->confirmLoginButton, &QPushButton::clicked, [&]() {
+        QString username = ui->usernameInput->text();
+        QString password = ui->passwordInput->text();
+
+        currentUser = &acturalCurrentUser;
+        bool loginSuccessfully = UserManager::loginUser(username, password,currentUser);
+
+        if(loginSuccessfully)
+        {
+                        QMessageBox::information(this, "登录", "登录成功！");
+                        goToAccountPage();
+        }
+        else {
+                    QMessageBox::warning(this, "登录", "账号或密码不正确。");
+                    currentUser=nullptr;
+                }
+
+
+    });
+
+}

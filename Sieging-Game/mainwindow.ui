@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>984</width>
-    <height>517</height>
+    <height>640</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -54,6 +54,21 @@
        </size>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_8">
+       <property name="spacing">
+        <number>10</number>
+       </property>
+       <property name="leftMargin">
+        <number>10</number>
+       </property>
+       <property name="topMargin">
+        <number>10</number>
+       </property>
+       <property name="rightMargin">
+        <number>10</number>
+       </property>
+       <property name="bottomMargin">
+        <number>10</number>
+       </property>
        <item>
         <widget class="QWidget" name="userInfromation" native="true">
          <property name="sizePolicy">
@@ -140,15 +155,33 @@
          <property name="sizeHint" stdset="0">
           <size>
            <width>20</width>
-           <height>40</height>
+           <height>80</height>
           </size>
          </property>
         </spacer>
        </item>
        <item>
         <layout class="QVBoxLayout" name="leftOptions">
+         <property name="spacing">
+          <number>8</number>
+         </property>
          <item>
           <widget class="QPushButton" name="mainPageBtn">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>60</height>
+            </size>
+           </property>
            <property name="text">
             <string>首页</string>
            </property>
@@ -156,6 +189,12 @@
          </item>
          <item>
           <widget class="QPushButton" name="vsComptrBtn">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>60</height>
+            </size>
+           </property>
            <property name="text">
             <string>人机对弈</string>
            </property>
@@ -163,6 +202,12 @@
          </item>
          <item>
           <widget class="QPushButton" name="vsPeopleBtn">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>60</height>
+            </size>
+           </property>
            <property name="text">
             <string>双人游戏</string>
            </property>
@@ -170,13 +215,25 @@
          </item>
          <item>
           <widget class="QPushButton" name="loginBtn">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>60</height>
+            </size>
+           </property>
            <property name="text">
-            <string>登录/注册</string>
+            <string>账户信息</string>
            </property>
           </widget>
          </item>
          <item>
           <widget class="QPushButton" name="settingsBtn">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>60</height>
+            </size>
+           </property>
            <property name="text">
             <string>设置/关于</string>
            </property>
@@ -222,7 +279,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="beginPage">
        <property name="styleSheet">
@@ -439,6 +496,15 @@
         <layout class="QHBoxLayout" name="horizontalLayout_4">
          <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
           <widget class="QWidget" name="widget_7" native="true">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
            <layout class="QVBoxLayout" name="verticalLayout_17">
             <item>
              <widget class="QLabel" name="label_24">
@@ -482,60 +548,125 @@
        </widget>
       </widget>
       <widget class="QWidget" name="loginPage">
-       <widget class="QWidget" name="horizontalWidget_3" native="true">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>451</width>
-          <height>491</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_5">
-         <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-          <widget class="QWidget" name="widget_8" native="true">
-           <layout class="QVBoxLayout" name="verticalLayout_18">
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QStackedWidget" name="stackedWidget">
+          <widget class="QWidget" name="mainMenuPage">
+           <layout class="QVBoxLayout" name="mainMenuLayout">
             <item>
-             <widget class="QLabel" name="label_26">
+             <widget class="QPushButton" name="loginButton">
               <property name="text">
-               <string>TextLabel</string>
+               <string>Login</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_27">
+             <widget class="QPushButton" name="registerButton">
               <property name="text">
-               <string>TextLabel</string>
+               <string>Register</string>
               </property>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="lineEdit"/>
-            </item>
-            <item>
-             <widget class="QLineEdit" name="lineEdit_2"/>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_24">
+             <widget class="QPushButton" name="accountSettingsButton">
               <property name="text">
-               <string>困难</string>
+               <string>Account Settings</string>
               </property>
              </widget>
             </item>
            </layout>
           </widget>
-         </item>
-        </layout>
-       </widget>
+          <widget class="QWidget" name="innerLoginPage">
+           <layout class="QVBoxLayout" name="loginLayout">
+            <item>
+             <widget class="QLineEdit" name="usernameInput">
+              <property name="placeholderText">
+               <string>Username</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="passwordInput">
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
+              <property name="placeholderText">
+               <string>Password</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="confirmLoginButton">
+              <property name="text">
+               <string>Login</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="backToMenuButtonFromLogin">
+              <property name="text">
+               <string>Back to Menu</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="registerPage">
+           <layout class="QVBoxLayout" name="registerLayout">
+            <item>
+             <widget class="QLineEdit" name="newUsernameInput">
+              <property name="placeholderText">
+               <string>Username</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLineEdit" name="newPasswordInput">
+              <property name="echoMode">
+               <enum>QLineEdit::Password</enum>
+              </property>
+              <property name="placeholderText">
+               <string>Password</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="confirmRegisterButton">
+              <property name="text">
+               <string>Register</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="backToMenuButtonFromRegister">
+              <property name="text">
+               <string>Back to Menu</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="accountSettingsPage">
+           <layout class="QVBoxLayout" name="accountSettingsLayout">
+            <item>
+             <widget class="QLabel" name="accountInfoLabel">
+              <property name="text">
+               <string>Username: </string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="backToMenuButtonFromAccount">
+              <property name="text">
+               <string>Back to Menu</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="settingPage"/>
       <widget class="QWidget" name="vsComptrPage">
@@ -548,16 +679,13 @@
        <property name="styleSheet">
         <string notr="true"/>
        </property>
-       <widget class="QWidget" name="horizontalWidget" native="true">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
+       <widget class="QWidget" name="widget" native="true">
         <property name="geometry">
          <rect>
-          <x>9</x>
-          <y>9</y>
-          <width>451</width>
-          <height>491</height>
+          <x>0</x>
+          <y>-3</y>
+          <width>461</width>
+          <height>501</height>
          </rect>
         </property>
         <property name="sizePolicy">
@@ -566,47 +694,114 @@
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item alignment="Qt::AlignHCenter|Qt::AlignVCenter">
-          <widget class="QWidget" name="widget_6" native="true">
-           <layout class="QVBoxLayout" name="verticalLayout_16">
+        <layout class="QVBoxLayout" name="verticalLayout_11">
+         <item>
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QWidget" name="horizontalWidget" native="true">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
-             <widget class="QLabel" name="label_22">
-              <property name="text">
-               <string>TextLabel</string>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+            <item>
+             <widget class="QWidget" name="widget_6" native="true">
+              <layout class="QVBoxLayout" name="verticalLayout_16">
+               <item>
+                <widget class="QLabel" name="label_22">
+                 <property name="text">
+                  <string>TextLabel</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_23">
+                 <property name="text">
+                  <string>TextLabel</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_16">
+                 <property name="text">
+                  <string>简单</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_17">
+                 <property name="text">
+                  <string>中等</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton_18">
+                 <property name="text">
+                  <string>困难</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
             <item>
-             <widget class="QLabel" name="label_23">
-              <property name="text">
-               <string>TextLabel</string>
+             <spacer name="horizontalSpacer_2">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
               </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_16">
-              <property name="text">
-               <string>简单</string>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
               </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_17">
-              <property name="text">
-               <string>中等</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="pushButton_18">
-              <property name="text">
-               <string>困难</string>
-              </property>
-             </widget>
+             </spacer>
             </item>
            </layout>
           </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_5">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
          </item>
         </layout>
        </widget>
