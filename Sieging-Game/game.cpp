@@ -1,9 +1,5 @@
 #include "game.h"
 
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 Game::Game(int width1, int height1, InitialState initialState1, Difficulty difficulty1)
 {
@@ -18,9 +14,9 @@ Game::Game(int width1, int height1, InitialState initialState1, Difficulty diffi
     cellSituation.resize(height - 1, std::vector<Cell>(width - 1));
     edgeSituation.resize(2 * height - 1, std::vector<Edge>(width));
 
-    for (int x1 = 0; x1 < 2 * height1 - 1; x1++) // ±ß³õÊ¼»¯
+    for (int x1 = 0; x1 < 2 * height1 - 1; x1++) // è¾¹åˆå§‹åŒ–
     {
-        if (x1 % 2 == 0) // ºáÏß
+        if (x1 % 2 == 0) // æ¨ªçº¿
         {
             for (int y1 = 0; y1 < width1 - 1; y1++)
             {
@@ -28,7 +24,7 @@ Game::Game(int width1, int height1, InitialState initialState1, Difficulty diffi
                 edgeSituation[x1][y1].y = y1;
             }
         }
-        if (x1 % 2 == 1) // ÊúÏß
+        if (x1 % 2 == 1) // ç«–çº¿
         {
             for (int y1 = 0; y1 < width1; y1++)
             {
@@ -38,7 +34,7 @@ Game::Game(int width1, int height1, InitialState initialState1, Difficulty diffi
         }
     }
 
-    for (int x1 = 0; x1 < height1 - 1; x1++) // ¸ñ³õÊ¼»¯
+    for (int x1 = 0; x1 < height1 - 1; x1++) // æ ¼åˆå§‹åŒ–
     {
         for (int y1 = 0; y1 < width1 - 1; y1++)
         {
@@ -64,9 +60,9 @@ void Game::selectEdge(int x, int y, Color player)
 {
     edgeSituation[x][y].color = player;
 
-    for (int x1 = 0; x1 < 2 * height - 1; x1++) // ±éÀúÃ¿Ò»Ìõ±ß
+    for (int x1 = 0; x1 < 2 * height - 1; x1++) // éå†æ¯ä¸€æ¡è¾¹
     {
-        if (x1 % 2 == 0) // ºáÏß
+        if (x1 % 2 == 0) // æ¨ªçº¿
         {
             for (int y1 = 0; y1 < width - 1; y1++)
             {
@@ -76,7 +72,7 @@ void Game::selectEdge(int x, int y, Color player)
                 }
             }
         }
-        if (x1 % 2 == 1) // ÊúÏß
+        if (x1 % 2 == 1) // ç«–çº¿
         {
             for (int y1 = 0; y1 < width; y1++)
             {
@@ -90,112 +86,7 @@ void Game::selectEdge(int x, int y, Color player)
 
     checkCell(x, y, player);
 }
-/*
-void Game::nextTurn()
-{
-    // ÕâÒ»ĞĞÊÇ²âÊÔĞĞ
-    // selectEdge(aiLogic(getDifficulty())->x,aiLogic(getDifficulty())->y,getPlayerNow());
 
-    if (checkGameOver() == false)
-    {
-        if (playerExtraTurn)
-        {
-            if (getInitialState() == human)
-            {
-                Edge *nextStep = aiLogic(getDifficulty());
-                int x = nextStep->x;
-                int y = nextStep->y;
-                if (getPlayerNow() == orange)
-                {
-                    selectEdge(x, y, getPlayerNow());
-                    nextTurn();
-                    playerExtraTurn=false;
-                    // !ËÆºõĞèÒª¼ÓÒ»¸öÖØ»æ×é¼şµÄ²½Öè
-                }
-            }
-            if (getInitialState() == comptr)
-            {
-                Edge *nextStep = aiLogic(getDifficulty());
-                int x = nextStep->x;
-                int y = nextStep->y;
-
-                // ´ıÑéÖ¤Âß¼­
-                if (getPlayerNow() == blue)
-                {
-                    selectEdge(x, y, blue);
-                    //nextTurn();
-                    playerExtraTurn=false;
-                    // !ËÆºõĞèÒª¼ÓÒ»¸öÖØ»æ×é¼şµÄ²½Öè
-                }
-                else if (getPlayerNow() == orange)
-                {
-                }
-
-                // selectEdge(x, y, blue); // ! ×¢Òâ£¡ÕâÀïµÄÂß¼­ĞèÒªĞŞ¸´£¡
-            }
-            if (getInitialState() == player1)
-            {
-                // Do Nothing
-
-                // if (getPlayerNow() == blue)
-                // {
-                //     setPlayer(orange);
-                // }
-                // else if (getPlayerNow() == orange)
-                // {
-                //     setPlayer(blue);
-                // }
-            }
-        }
-        else
-        {
-            if (getInitialState() == human)
-            {
-                Edge *nextStep = aiLogic(getDifficulty());
-                int x = nextStep->x;
-                int y = nextStep->y;
-                if (getPlayerNow() == blue)
-                {
-                    setPlayer(orange);
-                    selectEdge(x, y, getPlayerNow());
-                }
-                else if (getPlayerNow() == orange)
-                {
-                    setPlayer(blue);
-                }
-            }
-            if (getInitialState() == comptr)
-            {
-                Edge *nextStep = aiLogic(getDifficulty());
-                int x = nextStep->x;
-                int y = nextStep->y;
-
-//                if (getPlayerNow() == blue)
-//                {
-//                    setPlayer(orange);
-//                }
-//                else if (getPlayerNow() == orange)
-//                {
-//                    setPlayer(blue);
-//                    selectEdge(x, y, getPlayerNow());
-//                }
-                selectEdge(x, y, blue); // ! ×¢Òâ£¡ÕâÀïµÄÂß¼­ĞèÒªĞŞ¸´£¡
-            }
-            if (getInitialState() == player1)
-            {
-                if (getPlayerNow() == blue)
-                {
-                    setPlayer(orange);
-                }
-                else if (getPlayerNow() == orange)
-                {
-                    setPlayer(blue);
-                }
-            }
-        }
-    }
-}
-*/
 void Game::checkAndChange(int x, int y, Color player)
 {
     if (cellSituation[x][y].check(player))
@@ -212,29 +103,29 @@ void Game::checkCell(int x, int y, Color player)
 {
 
     playerExtraTurn = false;
-    if (x % 2 == 0) // ºáÏß
+    if (x % 2 == 0) // æ¨ªçº¿
     {
-        if (x == 0) // ×îÉÏ·½µÄÒ»ĞĞ£¬¼ì²éÏÂÃæµÄ·½¿é
+        if (x == 0) // æœ€ä¸Šæ–¹çš„ä¸€è¡Œï¼Œæ£€æŸ¥ä¸‹é¢çš„æ–¹å—
         {
             checkAndChange(x / 2, y, player);
         }
-        else if (x / 2 - 1 == height - 2) // ×îÏÂ·½µÄÒ»ĞĞ£¬¼ì²éÉÏÃæµÄ·½¿é
+        else if (x / 2 - 1 == height - 2) // æœ€ä¸‹æ–¹çš„ä¸€è¡Œï¼Œæ£€æŸ¥ä¸Šé¢çš„æ–¹å—
         {
             checkAndChange(x / 2 - 1, y, player);
         }
-        else // ÖĞ¼äµÄĞĞ£¬Á½±ß¶¼¼ì²é
+        else // ä¸­é—´çš„è¡Œï¼Œä¸¤è¾¹éƒ½æ£€æŸ¥
         {
             checkAndChange(x / 2, y, player);
             checkAndChange(x / 2 - 1, y, player);
         }
     }
-    if (x % 2 == 1) // ÊúÏß
+    if (x % 2 == 1) // ç«–çº¿
     {
-        if (y == 0) // ×î×ó¶ËµÄÒ»ĞĞ£¬¼ì²éÓÒ±ßµÄ·½¿é
+        if (y == 0) // æœ€å·¦ç«¯çš„ä¸€è¡Œï¼Œæ£€æŸ¥å³è¾¹çš„æ–¹å—
         {
             checkAndChange((x - 1) / 2, y, player);
         }
-        else if (y == width - 1) // ×îÓÒ¶ËµÄÒ»ĞĞ£¬¼ì²é×ó±ßµÄ·½¿é
+        else if (y == width - 1) // æœ€å³ç«¯çš„ä¸€è¡Œï¼Œæ£€æŸ¥å·¦è¾¹çš„æ–¹å—
         {
             checkAndChange((x - 1) / 2, y - 1, player);
         }
@@ -248,7 +139,7 @@ void Game::checkCell(int x, int y, Color player)
 
 bool Game::checkGameOver()
 {
-    for (int x1 = 0; x1 < height - 1; x1++) // ±éÀúÃ¿Ò»¸ñ
+    for (int x1 = 0; x1 < height - 1; x1++) // éå†æ¯ä¸€æ ¼
     {
         for (int y1 = 0; y1 < width - 1; y1++)
         {
@@ -262,7 +153,7 @@ bool Game::checkGameOver()
 int Game::countPlayerCells(Color player) const
 {
     int count = 0;
-    for (int x1 = 0; x1 < height - 1; x1++) // ±éÀúÃ¿Ò»¸ñ
+    for (int x1 = 0; x1 < height - 1; x1++) // éå†æ¯ä¸€æ ¼
     {
         for (int y1 = 0; y1 < width - 1; y1++)
         {
@@ -273,22 +164,20 @@ int Game::countPlayerCells(Color player) const
     return count;
 }
 
-void Game::gameOver() // ! ÕâÀïĞèÒªÍêÉÆÓÎÏ·½áÊøÂß¼­
+short Game::gameOver()
 {
     if (countPlayerCells(blue) > countPlayerCells(orange))
     {
-        cout << "À¶·½Ê¤Àû£¡" << endl;
-        // À¶·½Ê¤Âß¼­
+        return 2; //è“æ–¹è·èƒœ
+
     }
     else if (countPlayerCells(blue) < countPlayerCells(orange))
     {
-        cout << "³È·½Ê¤Àû£¡" << endl;
-        // ³È·½Ê¤Âß¼­
+        return 3; //æ©™æ–¹è·èƒœ
     }
     else
     {
-        cout << "Æ½¾Ö£¡" << endl;
-        // Æ½¾ÖÂß¼­
+        return 1; //å¹³å±€
     }
 }
 
@@ -297,9 +186,9 @@ void Game::reset()
 
     cellSituation.resize(height - 1, std::vector<Cell>(width - 1));
     edgeSituation.resize(2 * height - 1, std::vector<Edge>(width));
-    for (int x1 = 0; x1 < 2 * height - 1; x1++) // ±ß³õÊ¼»¯
+    for (int x1 = 0; x1 < 2 * height - 1; x1++) // è¾¹åˆå§‹åŒ–
     {
-        if (x1 % 2 == 0) // ºáÏß
+        if (x1 % 2 == 0) // æ¨ªçº¿
         {
             for (int y1 = 0; y1 < width - 1; y1++)
             {
@@ -307,7 +196,7 @@ void Game::reset()
                 edgeSituation[x1][y1].y = y1;
             }
         }
-        if (x1 % 2 == 1) // ÊúÏß
+        if (x1 % 2 == 1) // ç«–çº¿
         {
             for (int y1 = 0; y1 < width; y1++)
             {
@@ -316,7 +205,7 @@ void Game::reset()
             }
         }
     }
-    for (int x1 = 0; x1 < height - 1; x1++) // ¸ñ³õÊ¼»¯
+    for (int x1 = 0; x1 < height - 1; x1++) // æ ¼åˆå§‹åŒ–
     {
         for (int y1 = 0; y1 < width - 1; y1++)
         {

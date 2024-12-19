@@ -16,6 +16,8 @@ public:
     ~gridSizeDialog();
 
     int getGridSize() const;
+    bool getFirstHand()const;
+    void setCheckBoxVisible(bool);
 
 private slots:
     void on_buttonBox_accepted();

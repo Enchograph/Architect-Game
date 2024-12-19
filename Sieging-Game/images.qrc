@@ -10,5 +10,9 @@
         <file>resources/Preservation.gif</file>
         <file>resources/Preservation.png</file>
         <file>resources/Preservation.mp4</file>
+        <file>resources/avatar.png</file>
+        <file>resources/DefaultAvatar.png</file>
+        <file>resources/icon.png</file>
+        <file>resources/transp.png</file>
     </qresource>
 </RCC>

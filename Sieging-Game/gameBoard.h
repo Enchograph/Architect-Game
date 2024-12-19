@@ -3,9 +3,19 @@
 
 #include <QWidget>
 #include "game.h"
-#include <QPixmap> // 用于加载图片
-#include <QTimer>  // 引入QTimer头文件
+#include <QPixmap>
+#include <QTimer>
+#include <QMessageBox>
+#include <QPainter>
+#include <QFile>
+#include <QMouseEvent>
+#include <cmath>
+#include <QDebug>
+#include <QEventLoop>
 
+#include "gameOverDialog.h"
+
+const int aiThinkingTime = 500;
 
 class gameBoard : public QWidget
 {
@@ -14,6 +24,9 @@ class gameBoard : public QWidget
 public:
     explicit gameBoard(Game *gameInstance, QWidget *parent = nullptr);
     ~gameBoard();
+
+    short getSituation; //0表示正在进行游戏，1表示平局，2表示胜利，3表示失败，4表示双人对战模式结束。
+    gameOverDialog * gameOverDialogWindow;
 
 protected:
     void paintEvent(QPaintEvent *event) override;
@@ -38,9 +51,17 @@ private:
     QPixmap edgeBluePixmap;
     QPixmap edgeOrangePixmap;
 
-    void drawGameBoard(QPainter &painter); // 绘制整个游戏棋盘
-    void drawEdges(QPainter &painter);     // 绘制边
-    void drawSquares(QPainter &painter);   // 绘制方格
+    void drawGameBoard(QPainter &painter);
+    void drawEdges(QPainter &painter);
+    void drawSquares(QPainter &painter);
+    Edge selectEdgeByClicking (int x,int y,QMouseEvent *event);
+    void nextStepFuction();
+    void aiStep(Color color);
+    void endAndSettlement();
+    void sleep(int time);
+
+
+
 };
 
 #endif // GAMEBOARD_H

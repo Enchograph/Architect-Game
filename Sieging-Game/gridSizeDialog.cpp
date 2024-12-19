@@ -21,6 +21,17 @@ int gridSizeDialog::getGridSize() const
     return ui->horizontalSlider->value();
 }
 
+bool gridSizeDialog::getFirstHand()const
+{
+    return ui->robotCheckBox->isChecked();
+}
+
+void gridSizeDialog::setCheckBoxVisible(bool a)
+{
+    ui->robotCheckBox->setVisible(a);
+}
+
+
 void gridSizeDialog::on_buttonBox_accepted()
 {
     accept();

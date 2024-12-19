@@ -1,9 +1,5 @@
 #include "game.h"
 
-#include <iostream>
-
-using std::cout;
-using std::endl;
 
 Edge *Game::aiLogic(Difficulty a)
 {
@@ -39,7 +35,7 @@ Edge *Game::simpleAiLogic()
             randomY = rand() % (width - 1);
             if (edgeSituation[randomX][randomY].color==white)
             {
-                cout<<"ai "<<"random: "<<randomX<<randomY<<endl;
+                qDebug()<<"ai "<<"random: "<<randomX<<randomY;
                 return &edgeSituation[randomX][randomY];
             }
         }
@@ -50,7 +46,7 @@ Edge *Game::simpleAiLogic()
             randomY = rand() % width;
             if (edgeSituation[randomX][randomY].color==white)
             {
-                cout<<"ai "<<"random: "<<randomX<<randomY<<endl;
+                qDebug()<<"ai "<<"random: "<<randomX<<randomY;
                 return &edgeSituation[randomX][randomY];
             }
         }
@@ -63,7 +59,7 @@ Edge *Game::simpleAiLogic()
                 {
                     if (edgeSituation[x1][y1].color==white)
                     {
-                        cout<<"ai "<<"traverse: "<<x1<<y1<<endl;
+                        qDebug()<<"ai "<<"traverse: "<<x1<<y1;
                         return &edgeSituation[x1][y1];
                     }
                 }
@@ -74,13 +70,13 @@ Edge *Game::simpleAiLogic()
                 {
                     if (edgeSituation[x1][y1].color==white)
                     {
-                        cout<<"ai "<<"traverse: "<<x1<<y1<<endl;
+                        qDebug()<<"ai "<<"traverse: "<<x1<<y1;
                         return &edgeSituation[x1][y1];
                     }
                 }
             }
         }
-    cout << "simpleAiLogic Error!" << endl;
+    qDebug() << "aiLogic Error!" << endl;
     return NULL;
 }
 
@@ -92,20 +88,28 @@ Edge *Game::mediumAiLogic()
         {
             if (cellSituation[x1][y1].unselectedEdge().theEdgeLefted != NULL)
             {
-                cout<<"ai "<<"strategy: "<<x1<<y1<<endl;
+                qDebug()<<"ai "<<"strategy: "<<x1<<y1;
                 return cellSituation[x1][y1].unselectedEdge().theEdgeLefted;
             }
         }
     }
 
-    //找不到就随机、遍历。
     return simpleAiLogic();
 }
 
 Edge *Game::hardAiLogic()
 {
-    cout << "hardAiLogic Error!" << endl;
-    return NULL;
+    for (int x1 = 0; x1 < height - 1; x1++) // 先遍历每一格找局部最优解
+    {
+        for (int y1 = 0; y1 < width - 1; y1++)
+        {
+            if (cellSituation[x1][y1].unselectedEdge().theEdgeLefted != NULL)
+            {
+                qDebug()<<"ai "<<"strategy: "<<x1<<y1;
+                return cellSituation[x1][y1].unselectedEdge().theEdgeLefted;
+            }
+        }
+    }
+    
+    return mediumAiLogic();
 }
-
-// 行棋逻辑

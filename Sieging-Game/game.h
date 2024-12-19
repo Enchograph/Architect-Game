@@ -3,8 +3,9 @@
 
 #include "basicClasses.h"
 #include <vector>
-#include <cstdlib> // 用于 rand 和 srand
-#include <ctime>   // 用于 time
+#include <cstdlib>
+#include <ctime>
+#include <QDebug>
 
 class Game
 {
@@ -39,8 +40,10 @@ public:
     void checkAndChange(int x, int y, Color player);
     bool checkGameOver();
     int countPlayerCells(Color player) const;
-    void gameOver();
+    short gameOver();
     void reset();
+    bool optionalGrid (int x,int y);
+
 
     Edge *simpleAiLogic();
     Edge *mediumAiLogic();

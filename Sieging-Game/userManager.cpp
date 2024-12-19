@@ -110,3 +110,49 @@ bool UserManager::loginUser(const QString &username, const QString &password, Us
     qDebug("loginUser() pswd or name not correct.");
     return false;
 }
+
+void UserManager::storageUserInformation(UserInformation * currentUser) {
+    qDebug("begin to store");
+
+    QJsonArray userArray;
+    if (!loadUserData(userArray)) {
+        qDebug("storageUserInformation() load error");
+        return;
+    }
+
+    bool userFound = false;
+    for (int i = 0; i < userArray.size(); ++i) {
+        QJsonObject userObject = userArray[i].toObject();
+        QString storedUid = userObject["uid"].toString();
+
+        if (storedUid == currentUser->currentUid) {
+            qDebug("begin to store2");
+
+            userObject["username"] = currentUser->currentUserName;
+            userObject["uid"] = currentUser->currentUid;
+            userObject["winNum"] = currentUser->currentWinNum;
+            userObject["loseNum"] = currentUser->currentLoseNum;
+            userObject["drawNum"] = currentUser->currentDrawNum;
+
+            qDebug("begin to store3");
+
+            userArray.replace(i, userObject);  // 替换原来的元素
+            userFound = true;
+            break;
+        }
+    }
+
+    if (!userFound) {
+        qDebug("User not found in the array.");
+    } else {
+        qDebug("User information updated.");
+    }
+
+    // 确保数据存储回去
+    if (userFound) {
+        saveUserData(userArray);
+    }
+
+    qDebug("storageUserInformation() completed.");
+}
+

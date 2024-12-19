@@ -16,23 +16,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    aiLogic.cpp \
     basicClasses.cpp \
+    cropWindow.cpp \
     game.cpp \
     gameBoard.cpp \
+    gameBoard_game.cpp \
+    gameBoard_paint.cpp \
+    gameOverDialog.cpp \
+    game_aiLogic.cpp \
     gridSizeDialog.cpp \
     main.cpp \
     mainwindow.cpp \
-    sleepFuction.cpp \
+    mainwindow_avatar.cpp \
+    mainwindow_gamePage.cpp \
+    mainwindow_loginPage.cpp \
+    mainwindow_ui.cpp \
     userManager.cpp
 
 HEADERS += \
     basicClasses.h \
+    cropWindow.h \
     game.h \
     gameBoard.h \
+    gameOverDialog.h \
     gridSizeDialog.h \
     mainwindow.h \
-    sleepFuction.h \
     userManager.h
 
 FORMS += \

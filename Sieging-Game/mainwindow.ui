@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>4000</width>
-    <height>2000</height>
+    <width>1056</width>
+    <height>1186</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -90,17 +90,26 @@
              </size>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
              <item>
               <widget class="QLabel" name="userNameLabel">
                <property name="text">
-                <string>用户名</string>
+                <string>您尚未登录</string>
                </property>
               </widget>
              </item>
              <item>
               <widget class="QLabel" name="UIDLabel">
                <property name="text">
-                <string>详细信息</string>
+                <string>登录以使用对局统计功能</string>
                </property>
                <property name="wordWrap">
                 <bool>true</bool>
@@ -119,6 +128,12 @@
              </sizepolicy>
             </property>
             <property name="minimumSize">
+             <size>
+              <width>128</width>
+              <height>128</height>
+             </size>
+            </property>
+            <property name="maximumSize">
              <size>
               <width>128</width>
               <height>128</height>
@@ -269,7 +284,7 @@
           </size>
          </property>
          <property name="text">
-          <string> </string>
+          <string/>
          </property>
         </widget>
        </item>
@@ -298,7 +313,7 @@
        </sizepolicy>
       </property>
       <property name="currentIndex">
-       <number>6</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="beginPage">
        <property name="styleSheet">
@@ -657,19 +672,6 @@
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="registerButton">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>16777215</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>Register</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
                  <widget class="QPushButton" name="loginButton">
                   <property name="maximumSize">
                    <size>
@@ -679,6 +681,19 @@
                   </property>
                   <property name="text">
                    <string>Login</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="registerButton">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>16777215</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>Register</string>
                   </property>
                  </widget>
                 </item>
@@ -807,7 +822,32 @@
              </widget>
             </item>
             <item>
+             <widget class="QPushButton" name="selectAvatarBtn">
+              <property name="text">
+               <string>selectAvatarBtn_1</string>
+              </property>
+             </widget>
+            </item>
+            <item>
              <widget class="QPushButton" name="backToMenuButtonFromAccount">
+              <property name="text">
+               <string>Back to Menu</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="accountSettingsPage_2">
+           <layout class="QVBoxLayout" name="accountSettingsLayout_2">
+            <item>
+             <widget class="QLabel" name="accountInfoLabel_2">
+              <property name="text">
+               <string>您尚未登录</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="backToMenuButtonFromAccount_2">
               <property name="text">
                <string>Back to Menu</string>
               </property>
@@ -978,7 +1018,21 @@
         </sizepolicy>
        </property>
       </widget>
-      <widget class="QWidget" name="aboutPage"/>
+      <widget class="QWidget" name="aboutPage">
+       <widget class="QLabel" name="label">
+        <property name="geometry">
+         <rect>
+          <x>130</x>
+          <y>140</y>
+          <width>151</width>
+          <height>51</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>“关于”页面</string>
+        </property>
+       </widget>
+      </widget>
      </widget>
     </item>
    </layout>

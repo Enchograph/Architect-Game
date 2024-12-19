@@ -3,9 +3,32 @@
 
 #include <QMainWindow>
 #include <QPropertyAnimation>
+
+
 #include "game.h"
 #include "gameBoard.h"
 #include "gridSizeDialog.h"
+#include "cropWindow.h"
+#include "userManager.h"
+
+#include <QScreen>
+#include <QGuiApplication>
+#include <QStackedWidget>
+
+#include <QMessageBox>
+#include <QMovie>
+
+#include <QDebug>
+
+#include <QFileDialog>
+#include <QPixmap>
+
+#include <QThread>
+
+#include <QStandardPaths>
+
+
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -30,8 +53,10 @@ private slots:
     void on_pushButton_17_clicked();
     void on_pushButton_18_clicked();
     void on_pushButton_19_clicked();
-    void on_pushButton_20_clicked();
-    void on_pushButton_21_clicked();
+    void on_selectAvatarBtn_clicked();       // 按钮点击槽函数
+    void onImageCropped(const QPixmap &croppedPixmap);  // 裁剪完成槽函数
+    void onEndGameButtonClicked(); // 结束游戏按钮点击事件
+    void onGameOverDialogClosed(); // 游戏结束对话框关闭时的操作
 
 private:
     Ui::MainWindow *ui;
@@ -58,9 +83,17 @@ private:
    UserInformation acturalCurrentUser;
 
 
+
+
+
+
+
    void goToAccountPage();
 
-        void setupConnections(); // 设置信号与槽
+        void setupConnections();
+
+        void updateUserInformation();
+
 
 };
 
