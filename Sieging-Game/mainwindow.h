@@ -62,6 +62,8 @@ private:
     Ui::MainWindow *ui;
     void switchPage(QWidget *targetPage); // 页面切换函数
     int getPageIndex(QWidget *page); // 获取页面的索引
+    void updatePageLayout(int pageIndex);
+
 
 
     Game *game;
@@ -93,6 +95,15 @@ private:
         void setupConnections();
 
         void updateUserInformation();
+
+
+
+
+        void adjustGifSize(QMovie *movie,QLabel * gifLabel) ;
+            //void resizeEvent(QResizeEvent *event) ;
+                void letGifBegin(QMovie *movie,QLabel * gifLabel);
+                void resizeGif(QLabel * gifLabel);
+
 
 
 };

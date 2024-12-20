@@ -3,13 +3,13 @@
 void gameBoard::loadImages()
 {
     // 加载PNG图片
-    squareEmptyPixmap = QPixmap(":/new/prefix1/resources/WhiteInside.png");
-    squareBluePixmap = QPixmap(":/new/prefix1/resources/BlueInside.png");
-    squareOrangePixmap = QPixmap(":/new/prefix1/resources/OrangeInside.png");
-    edgeWhitePixmap = QPixmap(":/new/prefix1/resources/WhiteEdge.png");
-    edgeBlackPixmap = QPixmap(":/new/prefix1/resources/BlackEdge.png");
-    edgeBluePixmap = QPixmap(":/new/prefix1/resources/BlueEdge.png");
-    edgeOrangePixmap = QPixmap(":/new/prefix1/resources/OrangeEdge.png");
+    squareEmptyPixmap = QPixmap(":/resources/WhiteInside.png");
+    squareBluePixmap = QPixmap(":/resources/BlueInside.png");
+    squareOrangePixmap = QPixmap(":/resources/OrangeInside.png");
+    edgeWhitePixmap = QPixmap(":/resources/WhiteEdge.png");
+    edgeBlackPixmap = QPixmap(":/resources/BlackEdge.png");
+    edgeBluePixmap = QPixmap(":/resources/BlueEdge.png");
+    edgeOrangePixmap = QPixmap(":/resources/OrangeEdge.png");
 }
 
 void gameBoard::resizeEvent(QResizeEvent *event)

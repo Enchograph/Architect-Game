@@ -10,38 +10,59 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-
     // 设置窗口大小为屏幕宽度的 70% 和高度的 70%
     QScreen *screen = QGuiApplication::primaryScreen();
     QRect screenGeometry = screen->geometry();
+    this->resize(screenGeometry.width() * 0.7, screenGeometry.height() * 0.7);
+
+    // 设置默认显示的页面为 beginPage
+    ui->contentPage->setCurrentWidget(ui->beginPage);
+
+    //
+
     this->resize(screenGeometry.width() * 0.7, screenGeometry.height() * 0.7);
 
     setupConnections();
 
     currentUser=NULL;
 
-    QPixmap defaultPixmap(":/new/prefix1/resources/DefaultAvatar.png");
+    QPixmap defaultPixmap(":/resources/DefaultAvatar.png");
 
     ui->avatarLabel->setPixmap(defaultPixmap);
 
+    QMovie *vsComptrMovie = new QMovie(":/resources/vsComptr.gif", QByteArray(), this);
+    QMovie *vsPeopleMovie = new QMovie(":/resources/vsPeople.gif", QByteArray(), this);
+    QMovie *loginMovie = new QMovie(":/resources/login.gif", QByteArray(), this);
+    QMovie *settingMovie = new QMovie(":/resources/rule.gif", QByteArray(), this);
+    QMovie *aboutMovie = new QMovie(":/resources/about.gif", QByteArray(), this);
 
-    //    QMovie *preservationMovie = new QMovie(":/new/prefix1/resources/Preservation.gif");
+    letGifBegin(vsComptrMovie,ui->vsComptrGifLabel);
+    letGifBegin(vsPeopleMovie,ui->vsPeopleGifLabel);
+    letGifBegin(loginMovie,ui->loginGifLabel);
+    letGifBegin(settingMovie,ui->settingGifLabel);
+    letGifBegin(aboutMovie,ui->aboutGifLabel);
 
-    //    QSize si(ui->preservationLabel->width(),ui->preservationLabel->height());
-    //    preservationMovie->setScaledSize(si);
+    letGifBegin(vsComptrMovie,ui->vsComptrGifLabel_2);
+    letGifBegin(vsPeopleMovie,ui->vsPeopleGifLabel_2);
+    letGifBegin(loginMovie,ui->loginGifLabel_2);
+    //letGifBegin(settingMovie,ui->settingGifLabel);
+    //letGifBegin(aboutMovie,ui->aboutGifLabel);
 
+    // QMovie *preservationMovie = new QMovie(":/resources/Preservation.gif");
     //        ui->preservationLabel->setMovie(preservationMovie);
     //        preservationMovie->start();
 
-        QPixmap *preservationMovie = new QPixmap(":/new/prefix1/resources/Preservation.png");
-            QSize si(ui->preservationLabel->width(),ui->preservationLabel->height());
-            * preservationMovie=preservationMovie->scaled(si);
+//        QPixmap *preservationPixmap = new QPixmap(":/resources/Preservation.png");
+//            QSize si(ui->preservationLabel->width(),ui->preservationLabel->height());
+//           * preservationPixmap=preservationPixmap->scaled(si);
 
-            ui->preservationLabel->setPixmap(*preservationMovie);
+//            ui->preservationLabel->setPixmap(*preservationPixmap);
 
 
-    // 设置默认显示的页面为 beginPage
-    ui->contentPage->setCurrentWidget(ui->beginPage);
+
+//    this->layout()->update();
+//    this->adjustSize(); // 强制调整大小
+
 
     dialog11 = new gridSizeDialog(this);
     dialog12 = new gridSizeDialog(this);

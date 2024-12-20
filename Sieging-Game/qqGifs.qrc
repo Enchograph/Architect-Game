@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/vsComptr.gif</file>
+        <file>resources/vsPeople.gif</file>
+    </qresource>
+</RCC>

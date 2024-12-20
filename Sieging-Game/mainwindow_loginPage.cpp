@@ -17,16 +17,18 @@ void MainWindow::updateUserInformation()
         {
             // 加载图片并显示到 QLabel
             QPixmap pixmap(filePath);
-            QPixmap defaultPixmap(":/new/prefix1/resources/DefaultAvatar.png");
+            QPixmap defaultPixmap(":/resources/DefaultAvatar.png");
 
 
             if (!pixmap.isNull())
             {
                 ui->avatarLabel->setPixmap(pixmap);
+                ui->userAvatarAtInfPageLabel->setPixmap(pixmap);
             }
             else
             {
                 ui->avatarLabel->setPixmap(defaultPixmap);
+                ui->userAvatarAtInfPageLabel->setPixmap(defaultPixmap);
             }
         }
 }

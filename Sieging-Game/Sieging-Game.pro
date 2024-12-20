@@ -29,6 +29,7 @@ SOURCES += \
     mainwindow.cpp \
     mainwindow_avatar.cpp \
     mainwindow_gamePage.cpp \
+    mainwindow_gif.cpp \
     mainwindow_loginPage.cpp \
     mainwindow_ui.cpp \
     userManager.cpp
@@ -53,7 +54,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    images.qrc
+    gifs.qrc \
+    images.qrc \
+    qqGifs.qrc
 
 LIBS += -ldwmapi
 # windows api, 用以实现毛玻璃效果

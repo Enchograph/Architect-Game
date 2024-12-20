@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resources/about.gif</file>
+        <file>resources/login.gif</file>
+        <file>resources/Preservation.gif</file>
+        <file>resources/rule.gif</file>
+        <file>resources/setting.gif</file>
+    </qresource>
+</RCC>

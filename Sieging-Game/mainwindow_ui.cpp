@@ -7,6 +7,11 @@ void MainWindow::switchPage(QWidget *targetPage)
     if (ui->contentPage->currentWidget() != targetPage) {
         int pageHeight = ui->contentPage->height();
         QWidget *currentPage = ui->contentPage->currentWidget();
+
+        updatePageLayout(getPageIndex(targetPage));
+        updatePageLayout(getPageIndex(currentPage));
+
+
         QPropertyAnimation *hideAnim = new QPropertyAnimation(currentPage, "geometry", this);
         QPropertyAnimation *showAnim = new QPropertyAnimation(targetPage, "geometry", this);
 
@@ -27,13 +32,46 @@ void MainWindow::switchPage(QWidget *targetPage)
 
         // 页面切换结束后开始显示动画
         connect(hideAnim, &QPropertyAnimation::finished, this, [=]() {
-            ui->contentPage->setCurrentWidget(targetPage);
+            //ui->contentPage->setCurrentWidget(targetPage);
+            updatePageLayout(getPageIndex(targetPage));
+
             showAnim->start();
         });
 
         hideAnim->start();
     }
 }
+
+void MainWindow::updatePageLayout(int pageIndex) {
+    // 获取目标页面
+    QWidget* page = ui->contentPage->widget(pageIndex);
+    if (!page) return; // 确保页面有效
+
+    // 方法 1: 调用 adjustSize 和 updateGeometry
+    page->adjustSize();
+    page->updateGeometry();
+
+    // 方法 2: 模拟 resizeEvent
+    QResizeEvent resizeEvent(ui->contentPage->size(), ui->contentPage->size());
+    QApplication::sendEvent(page, &resizeEvent);
+
+    // 方法 3: 强制触发布局重新计算
+    QLayout* layout = page->layout();
+    if (layout) {
+        layout->activate(); // 重新计算布局
+    }
+
+    // 方法 4: 暂时改变页面的尺寸然后还原
+    QSize originalSize = page->size();
+    page->resize(originalSize.width() + 1, originalSize.height() + 1);
+    page->resize(originalSize);
+
+    // 方法 5: 确保切换到该页面并更新
+    ui->contentPage->setCurrentIndex(pageIndex);
+    ui->contentPage->update(); // 更新 contentPage
+    page->update();            // 更新目标页面
+}
+
 
 int MainWindow::getPageIndex(QWidget *page)
 {
