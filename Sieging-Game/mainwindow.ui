@@ -17,7 +17,7 @@
    </sizepolicy>
   </property>
   <property name="windowTitle">
-   <string>Sieging Game</string>
+   <string>筑城者</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
@@ -43,6 +43,9 @@
      <number>0</number>
     </property>
     <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
      <number>0</number>
     </property>
     <item row="0" column="0">
@@ -282,7 +285,7 @@ border-right: none;
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>人机对弈</string>
+          <string>人机对战</string>
          </property>
         </widget>
        </item>
@@ -319,22 +322,6 @@ border-right: none;
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="settingsBtn">
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>60</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>游戏规则</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="aboutBtn">
          <property name="minimumSize">
           <size>
@@ -346,7 +333,7 @@ border-right: none;
           <string notr="true"/>
          </property>
          <property name="text">
-          <string>关于</string>
+          <string>游戏说明</string>
          </property>
         </widget>
        </item>
@@ -379,7 +366,7 @@ border-right: none;
 background-color: rgb(255, 255, 255);}</string>
       </property>
       <property name="currentIndex">
-       <number>4</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="beginPage">
        <property name="styleSheet">
@@ -479,11 +466,11 @@ background-color: rgb(255, 255, 255);}</string>
                 <property name="minimumSize">
                  <size>
                   <width>300</width>
-                  <height>30</height>
+                  <height>60</height>
                  </size>
                 </property>
                 <property name="text">
-                 <string>人机对弈</string>
+                 <string>人机对战</string>
                 </property>
                </widget>
               </item>
@@ -595,7 +582,7 @@ background-color: rgb(255, 255, 255);}</string>
                   <property name="minimumSize">
                    <size>
                     <width>300</width>
-                    <height>30</height>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="text">
@@ -713,7 +700,7 @@ background-color: rgb(255, 255, 255);}</string>
                   <property name="minimumSize">
                    <size>
                     <width>300</width>
-                    <height>30</height>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="text">
@@ -723,124 +710,6 @@ background-color: rgb(255, 255, 255);}</string>
                 </item>
                 <item>
                  <spacer name="verticalSpacer_30">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </widget>
-           </item>
-           <item>
-            <widget class="QWidget" name="widget_5" native="true">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <layout class="QVBoxLayout" name="verticalLayout_9">
-              <property name="leftMargin">
-               <number>10</number>
-              </property>
-              <property name="rightMargin">
-               <number>10</number>
-              </property>
-              <item>
-               <layout class="QVBoxLayout" name="verticalLayout_10">
-                <item>
-                 <spacer name="verticalSpacer_36">
-                  <property name="orientation">
-                   <enum>Qt::Vertical</enum>
-                  </property>
-                  <property name="sizeHint" stdset="0">
-                   <size>
-                    <width>20</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                 </spacer>
-                </item>
-                <item>
-                 <widget class="QWidget" name="horizontalWidget_2aaaa" native="true">
-                  <property name="minimumSize">
-                   <size>
-                    <width>40</width>
-                    <height>40</height>
-                   </size>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_11">
-                   <item>
-                    <spacer name="horizontalSpacer_26">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="settingGifLabel">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>282</width>
-                       <height>282</height>
-                      </size>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_25">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="settingsBtn_2">
-                  <property name="minimumSize">
-                   <size>
-                    <width>300</width>
-                    <height>30</height>
-                   </size>
-                  </property>
-                  <property name="text">
-                   <string>游戏规则</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <spacer name="verticalSpacer_31">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
                   </property>
@@ -949,11 +818,11 @@ background-color: rgb(255, 255, 255);}</string>
                   <property name="minimumSize">
                    <size>
                     <width>300</width>
-                    <height>30</height>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="text">
-                   <string>关于</string>
+                   <string>游戏说明</string>
                   </property>
                  </widget>
                 </item>
@@ -1128,7 +997,7 @@ background-color: rgb(255, 255, 255);}</string>
                   <property name="minimumSize">
                    <size>
                     <width>240</width>
-                    <height>40</height>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -1147,7 +1016,7 @@ background-color: rgb(255, 255, 255);}</string>
                   <property name="minimumSize">
                    <size>
                     <width>240</width>
-                    <height>40</height>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -1166,7 +1035,7 @@ background-color: rgb(255, 255, 255);}</string>
                   <property name="minimumSize">
                    <size>
                     <width>240</width>
-                    <height>40</height>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -1361,7 +1230,7 @@ background-color: rgb(255, 255, 255);}</string>
                   <property name="minimumSize">
                    <size>
                     <width>240</width>
-                    <height>40</height>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -1543,7 +1412,7 @@ background-color: rgb(255, 255, 255);}</string>
                   <property name="minimumSize">
                    <size>
                     <width>240</width>
-                    <height>40</height>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -1562,7 +1431,7 @@ background-color: rgb(255, 255, 255);}</string>
                   <property name="minimumSize">
                    <size>
                     <width>240</width>
-                    <height>40</height>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -1581,7 +1450,7 @@ background-color: rgb(255, 255, 255);}</string>
                   <property name="minimumSize">
                    <size>
                     <width>240</width>
-                    <height>40</height>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="maximumSize">
@@ -1678,7 +1547,7 @@ background-color: rgb(255, 255, 255);}</string>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>30</height>
+                      <height>80</height>
                      </size>
                     </property>
                     <property name="placeholderText">
@@ -1691,7 +1560,7 @@ background-color: rgb(255, 255, 255);}</string>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>30</height>
+                      <height>80</height>
                      </size>
                     </property>
                     <property name="echoMode">
@@ -1723,7 +1592,7 @@ background-color: rgb(255, 255, 255);}</string>
                     <property name="minimumSize">
                      <size>
                       <width>240</width>
-                      <height>40</height>
+                      <height>60</height>
                      </size>
                     </property>
                     <property name="text">
@@ -1736,7 +1605,7 @@ background-color: rgb(255, 255, 255);}</string>
                     <property name="minimumSize">
                      <size>
                       <width>240</width>
-                      <height>40</height>
+                      <height>60</height>
                      </size>
                     </property>
                     <property name="text">
@@ -1829,7 +1698,7 @@ background-color: rgb(255, 255, 255);}</string>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>30</height>
+                      <height>80</height>
                      </size>
                     </property>
                     <property name="placeholderText">
@@ -1842,7 +1711,7 @@ background-color: rgb(255, 255, 255);}</string>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>30</height>
+                      <height>80</height>
                      </size>
                     </property>
                     <property name="echoMode">
@@ -1874,7 +1743,7 @@ background-color: rgb(255, 255, 255);}</string>
                     <property name="minimumSize">
                      <size>
                       <width>240</width>
-                      <height>40</height>
+                      <height>60</height>
                      </size>
                     </property>
                     <property name="text">
@@ -1887,7 +1756,7 @@ background-color: rgb(255, 255, 255);}</string>
                     <property name="minimumSize">
                      <size>
                       <width>240</width>
-                      <height>40</height>
+                      <height>60</height>
                      </size>
                     </property>
                     <property name="text">
@@ -2050,7 +1919,7 @@ background-color: rgb(255, 255, 255);}</string>
                    <property name="minimumSize">
                     <size>
                      <width>240</width>
-                     <height>40</height>
+                     <height>60</height>
                     </size>
                    </property>
                    <property name="text">
@@ -2063,7 +1932,7 @@ background-color: rgb(255, 255, 255);}</string>
                    <property name="minimumSize">
                     <size>
                      <width>240</width>
-                     <height>40</height>
+                     <height>60</height>
                     </size>
                    </property>
                    <property name="text">
@@ -2171,7 +2040,7 @@ background-color: rgb(255, 255, 255);}</string>
                    <property name="minimumSize">
                     <size>
                      <width>240</width>
-                     <height>40</height>
+                     <height>60</height>
                     </size>
                    </property>
                    <property name="text">
@@ -2271,17 +2140,6 @@ background-color: rgb(255, 255, 255);}</string>
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QWidget" name="horizontalWidget_2_2" native="true">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>10</height>
-                   </size>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_5_1"/>
-                 </widget>
-                </item>
-                <item>
                  <widget class="QLabel" name="label_2">
                   <property name="minimumSize">
                    <size>
@@ -2308,9 +2166,8 @@ background-color: rgb(255, 255, 255);}</string>
 双方先后选边，全边者得城加分，多走一步。
 
 结算时城多者胜。
-希望你能从中收获乐趣！
 
-具体技术栈请参见附属文档。</string>
+希望你能从中收获乐趣！</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -2408,57 +2265,6 @@ background-color: rgb(255, 255, 255);}</string>
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QWidget" name="horizontalWidget_2_2" native="true">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>10</height>
-                   </size>
-                  </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_5_1">
-                   <item>
-                    <spacer name="horizontalSpacer_5">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                   <item>
-                    <widget class="QLabel" name="vsPeopleGifLabel_2">
-                     <property name="minimumSize">
-                      <size>
-                       <width>282</width>
-                       <height>282</height>
-                      </size>
-                     </property>
-                     <property name="text">
-                      <string/>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <spacer name="horizontalSpacer_20">
-                     <property name="orientation">
-                      <enum>Qt::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>40</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
-                   </item>
-                  </layout>
-                 </widget>
-                </item>
-                <item>
                  <widget class="QLabel" name="label_2">
                   <property name="minimumSize">
                    <size>
@@ -2466,19 +2272,38 @@ background-color: rgb(255, 255, 255);}</string>
                     <height>60</height>
                    </size>
                   </property>
+                  <property name="font">
+                   <font>
+                    <family>华文中宋</family>
+                    <pointsize>12</pointsize>
+                    <weight>50</weight>
+                    <italic>false</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">font: 20pt &quot;华文中宋&quot;;</string>
+                   <string notr="true">font: 12pt &quot;华文中宋&quot;;</string>
                   </property>
                   <property name="text">
-                   <string>双人游戏</string>
+                   <string>游戏名《筑城者》。
+
+城有四围，围边筑城。
+双方先后选边，全边者得城加分，多走一步。
+
+结算时城多者胜。
+
+游戏具有三种不同难度的AI逻辑以及双人对战模式，
+您可以通过注册、登录账号保存自己的游戏数据。
+
+希望你能从中收获乐趣！</string>
                   </property>
                   <property name="alignment">
-                   <set>Qt::AlignCenter</set>
+                   <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>
                 <item>
-                 <spacer name="verticalSpacer_4">
+                 <spacer name="verticalSpacer_31">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
                   </property>
@@ -2494,21 +2319,44 @@ background-color: rgb(255, 255, 255);}</string>
                  </spacer>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_19">
-                  <property name="minimumSize">
+                 <widget class="QLabel" name="label_3">
+                  <property name="styleSheet">
+                   <string notr="true">font: 12pt &quot;华文中宋&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>计算机类2024级 陈宏宇</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_10">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Fixed</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
                    <size>
-                    <width>240</width>
-                    <height>40</height>
+                    <width>20</width>
+                    <height>80</height>
                    </size>
                   </property>
-                  <property name="maximumSize">
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushCowButton">
+                  <property name="minimumSize">
                    <size>
-                    <width>16777215</width>
-                    <height>16777215</height>
+                    <width>300</width>
+                    <height>60</height>
                    </size>
                   </property>
                   <property name="text">
-                   <string>开始游戏！</string>
+                   <string>小试牛刀？</string>
                   </property>
                  </widget>
                 </item>

@@ -49,10 +49,17 @@ private slots:
     void on_loginBtn_clicked();
     void on_settingsBtn_clicked();
     void on_aboutBtn_clicked();
+    void on_vsComptrBtn_2_clicked();
+    void on_vsPeopleBtn_2_clicked();
+    void on_mainPageBtn_2_clicked();
+    void on_loginBtn_2_clicked();
+    void on_settingsBtn_2_clicked();
+    void on_aboutBtn_2_clicked();
     void on_pushButton_16_clicked();
     void on_pushButton_17_clicked();
     void on_pushButton_18_clicked();
     void on_pushButton_19_clicked();
+    void on_pushCowButton_clicked();
     void on_selectAvatarBtn_clicked();       // 按钮点击槽函数
     void onImageCropped(const QPixmap &croppedPixmap);  // 裁剪完成槽函数
     void onEndGameButtonClicked(); // 结束游戏按钮点击事件

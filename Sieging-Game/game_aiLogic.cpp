@@ -99,6 +99,18 @@ Edge *Game::mediumAiLogic()
 
 Edge *Game::hardAiLogic()
 {
+    for (int x1 = 0; x1 < height - 1; x1++) // 先遍历每一格找局部最优解
+    {
+        for (int y1 = 0; y1 < width - 1; y1++)
+        {
+            if (cellSituation[x1][y1].unselectedEdge().theEdgeLefted != NULL)
+            {
+                qDebug()<<"ai "<<"strategy: "<<x1<<y1;
+                return cellSituation[x1][y1].unselectedEdge().theEdgeLefted;
+            }
+        }
+    }
+
     srand(static_cast<unsigned int>(time(0))); // 设置随机数种子
        int x, y;
        for (int z = 0; z < 10; z++)

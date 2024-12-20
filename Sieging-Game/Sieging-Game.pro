@@ -55,7 +55,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     gifs.qrc \
-    images.qrc
+    images.qrc \
+    qqGifs.qrc
 
 LIBS += -ldwmapi
 # windows api, 用以实现毛玻璃效果

@@ -43,8 +43,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     //QMovie *vsComptrMovie = new QMovie(":/resources/vsComptr.gif", QByteArray(), this);
     //QMovie *vsPeopleMovie = new QMovie(":/resources/vsPeople.gif", QByteArray(), this);
-    QMovie *vsComptrMovie = new QMovie(":/resources/login.gif", QByteArray(), this);
-    QMovie *vsPeopleMovie = new QMovie(":/resources/login.gif", QByteArray(), this);
+    QMovie *vsComptrMovie = new QMovie(":/resources/vsComptr.gif", QByteArray(), this);
+    QMovie *vsPeopleMovie = new QMovie(":/resources/vsPeople.gif", QByteArray(), this);
     QMovie *loginMovie = new QMovie(":/resources/login.gif", QByteArray(), this);
     QMovie *settingMovie = new QMovie(":/resources/rule.gif", QByteArray(), this);
     QMovie *aboutMovie = new QMovie(":/resources/about.gif", QByteArray(), this);
@@ -52,8 +52,9 @@ MainWindow::MainWindow(QWidget *parent)
     letGifBegin(vsComptrMovie,ui->vsComptrGifLabel);
     letGifBegin(vsPeopleMovie,ui->vsPeopleGifLabel);
     letGifBegin(loginMovie,ui->loginGifLabel);
-    letGifBegin(settingMovie,ui->settingGifLabel);
-    letGifBegin(aboutMovie,ui->aboutGifLabel);
+    //    letGifBegin(settingMovie,ui->settingGifLabel);
+    //    letGifBegin(aboutMovie,ui->aboutGifLabel);
+        letGifBegin(settingMovie,ui->aboutGifLabel);
 
     letGifBegin(vsComptrMovie,ui->vsComptrGifLabel_2);
     letGifBegin(vsPeopleMovie,ui->vsPeopleGifLabel_2);
