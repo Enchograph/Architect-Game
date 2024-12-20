@@ -8,7 +8,7 @@ void MainWindow::updateUserInformation()
                                   "\n胜利场数：" + QString::number(currentUser->currentWinNum) +
                                   "\n失败场数：" + QString::number(currentUser->currentLoseNum) +
                                   "\n平局次数：" + QString::number(currentUser->currentDrawNum));
-    ui->userNameLabel->setText("用户名：" + currentUser->currentUserName);
+    ui->userNameLabel->setText("" + currentUser->currentUserName);
     ui->UIDLabel->setText("UID：" + currentUser->currentUid);
 
     QString filePath = currentUser->currentUid + ".png";

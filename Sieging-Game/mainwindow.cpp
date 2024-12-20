@@ -18,9 +18,20 @@ MainWindow::MainWindow(QWidget *parent)
     // 设置默认显示的页面为 beginPage
     ui->contentPage->setCurrentWidget(ui->beginPage);
 
-    //
 
-    this->resize(screenGeometry.width() * 0.7, screenGeometry.height() * 0.7);
+
+//    updatePageLayout(getPageIndex(ui->vsComptrPage));
+//    updatePageLayout(getPageIndex(ui->vsPeoplePage));
+//    updatePageLayout(getPageIndex(ui->loginPage));
+//    updatePageLayout(getPageIndex(ui->settingPage));
+//    updatePageLayout(getPageIndex(ui->aboutPage));
+//    updatePageLayout(getPageIndex(ui->beginPage));
+
+    ui->passwordInput ->setEchoMode(QLineEdit::Password);
+    ui->newPasswordInput ->setEchoMode(QLineEdit::Password);
+
+
+
 
     setupConnections();
 
@@ -30,8 +41,10 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->avatarLabel->setPixmap(defaultPixmap);
 
-    QMovie *vsComptrMovie = new QMovie(":/resources/vsComptr.gif", QByteArray(), this);
-    QMovie *vsPeopleMovie = new QMovie(":/resources/vsPeople.gif", QByteArray(), this);
+    //QMovie *vsComptrMovie = new QMovie(":/resources/vsComptr.gif", QByteArray(), this);
+    //QMovie *vsPeopleMovie = new QMovie(":/resources/vsPeople.gif", QByteArray(), this);
+    QMovie *vsComptrMovie = new QMovie(":/resources/login.gif", QByteArray(), this);
+    QMovie *vsPeopleMovie = new QMovie(":/resources/login.gif", QByteArray(), this);
     QMovie *loginMovie = new QMovie(":/resources/login.gif", QByteArray(), this);
     QMovie *settingMovie = new QMovie(":/resources/rule.gif", QByteArray(), this);
     QMovie *aboutMovie = new QMovie(":/resources/about.gif", QByteArray(), this);

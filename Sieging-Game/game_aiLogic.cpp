@@ -76,7 +76,7 @@ Edge *Game::simpleAiLogic()
                 }
             }
         }
-    qDebug() << "aiLogic Error!" << endl;
+    qDebug() << "aiLogic Error!";
     return NULL;
 }
 

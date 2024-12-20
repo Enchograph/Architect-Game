@@ -32,8 +32,9 @@ void MainWindow::switchPage(QWidget *targetPage)
 
         // 页面切换结束后开始显示动画
         connect(hideAnim, &QPropertyAnimation::finished, this, [=]() {
-            //ui->contentPage->setCurrentWidget(targetPage);
-            updatePageLayout(getPageIndex(targetPage));
+            ui->contentPage->setCurrentWidget(targetPage);
+
+            //这一行是成功的解决方案 updatePageLayout(getPageIndex(targetPage));
 
             showAnim->start();
         });

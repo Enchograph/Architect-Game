@@ -46,7 +46,7 @@ void gameBoard::drawGameBoard(QPainter &painter)
     // 然后绘制方格
     drawSquares(painter);
 
-    qDebug()<<"paint once."<<endl;
+    qDebug()<<"paint once.";
 
 }
 
