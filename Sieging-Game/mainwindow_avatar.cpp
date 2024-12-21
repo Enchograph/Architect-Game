@@ -45,7 +45,7 @@ void MainWindow::onImageCropped(const QPixmap &croppedPixmap)
 
 
         // 将处理后的圆形图像设置到 avatarLabel
-        ui->avatarLabel->setPixmap(QPixmap::fromImage(circleImage));
+        //ui->avatarLabel->setPixmap(QPixmap::fromImage(circleImage));
 
         if(currentUser)
         {
@@ -57,4 +57,5 @@ void MainWindow::onImageCropped(const QPixmap &croppedPixmap)
         {
             qDebug()<<"error on saving avatar.";
         }
+        updateUserInformation();
 }

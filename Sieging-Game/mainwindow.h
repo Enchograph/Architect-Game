@@ -55,6 +55,8 @@ private slots:
     void on_loginBtn_2_clicked();
     void on_settingsBtn_2_clicked();
     void on_aboutBtn_2_clicked();
+    void on_ruleBtn_clicked();
+    void on_ruleBtn_2_clicked();
     void on_pushButton_16_clicked();
     void on_pushButton_17_clicked();
     void on_pushButton_18_clicked();
@@ -84,6 +86,7 @@ private:
     gridSizeDialog * dialog11;
     gridSizeDialog * dialog12;
     gridSizeDialog * dialog13;
+    gridSizeDialog * dialog14;
     gridSizeDialog * dialog21;
     gridSizeDialog * dialog22;
     gridSizeDialog * dialog23;

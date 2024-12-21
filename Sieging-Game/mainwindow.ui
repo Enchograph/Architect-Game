@@ -1050,6 +1050,19 @@ background-color: rgb(255, 255, 255);}</string>
                  </widget>
                 </item>
                 <item>
+                 <widget class="QPushButton" name="ruleBtn">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>60</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>还不了解游戏规则？点击这里！</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
                  <spacer name="verticalSpacer_20">
                   <property name="orientation">
                    <enum>Qt::Vertical</enum>
@@ -1241,6 +1254,19 @@ background-color: rgb(255, 255, 255);}</string>
                   </property>
                   <property name="text">
                    <string>开始游戏！</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="ruleBtn_2">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>60</height>
+                   </size>
+                  </property>
+                  <property name="text">
+                   <string>还不了解游戏规则？点击这里！</string>
                   </property>
                  </widget>
                 </item>
@@ -1547,7 +1573,7 @@ background-color: rgb(255, 255, 255);}</string>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>80</height>
+                      <height>60</height>
                      </size>
                     </property>
                     <property name="placeholderText">
@@ -1560,7 +1586,7 @@ background-color: rgb(255, 255, 255);}</string>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>80</height>
+                      <height>60</height>
                      </size>
                     </property>
                     <property name="echoMode">
@@ -1698,7 +1724,7 @@ background-color: rgb(255, 255, 255);}</string>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>80</height>
+                      <height>60</height>
                      </size>
                     </property>
                     <property name="placeholderText">
@@ -1711,7 +1737,7 @@ background-color: rgb(255, 255, 255);}</string>
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>80</height>
+                      <height>60</height>
                      </size>
                     </property>
                     <property name="echoMode">
@@ -2287,8 +2313,9 @@ background-color: rgb(255, 255, 255);}</string>
                   <property name="text">
                    <string>游戏名《筑城者》。
 
-城有四围，围边筑城。
-双方先后选边，全边者得城加分，多走一步。
+城有四边，围边筑城。
+双方先后选边，率先围上某格的第四条边者
+得此格，并且可以多走一步。
 
 结算时城多者胜。
 

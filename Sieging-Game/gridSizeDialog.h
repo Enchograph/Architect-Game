@@ -18,6 +18,8 @@ public:
     int getGridSize() const;
     bool getFirstHand()const;
     void setCheckBoxVisible(bool);
+    void setValue(int value);
+
 
 private slots:
     void on_buttonBox_accepted();

@@ -158,14 +158,14 @@ void gameBoard::endAndSettlement()
         {
 
             getSituation=3;
-            gameOverDialogWindow->setDialogText("蓝方获胜！");
+            gameOverDialogWindow->setDialogText("\n蓝方获胜！\n\n您可以在账户信息里\n查看自己的对局记录。");
             gameOverDialogWindow->exec();
         }
         else if(game->gameOver()==3)
         {
 
             getSituation=2;
-            gameOverDialogWindow->setDialogText("橙方获胜！");
+            gameOverDialogWindow->setDialogText("\n橙方获胜！\n\n您可以在账户信息里\n查看自己的对局记录。");
             gameOverDialogWindow->exec();
 
         }
@@ -174,7 +174,7 @@ void gameBoard::endAndSettlement()
 
             getSituation=1;
 
-            gameOverDialogWindow->setDialogText("平局");
+            gameOverDialogWindow->setDialogText("\n平局\n\n您可以在账户信息里\n查看自己的对局记录。");
             gameOverDialogWindow->exec();
         }
     }
@@ -184,14 +184,14 @@ void gameBoard::endAndSettlement()
         {
 
             getSituation=2;
-            gameOverDialogWindow->setDialogText("蓝方获胜！");
+            gameOverDialogWindow->setDialogText("\n蓝方获胜！\n\n您可以在账户信息里\n查看自己的对局记录。");
             gameOverDialogWindow->exec();
         }
         else if(game->gameOver()==3)
         {
 
             getSituation=3;
-            gameOverDialogWindow->setDialogText("橙方获胜！");
+            gameOverDialogWindow->setDialogText("\n橙方获胜！\n\n您可以在账户信息里\n查看自己的对局记录。");
             gameOverDialogWindow->exec();
 
         }
@@ -199,7 +199,7 @@ void gameBoard::endAndSettlement()
         {
 
             getSituation=1;
-            gameOverDialogWindow->setDialogText("平局");
+            gameOverDialogWindow->setDialogText("\n平局。\n\n您可以在账户信息里\n查看自己的对局记录。");
             gameOverDialogWindow->exec();
 
         }
@@ -210,21 +210,21 @@ void gameBoard::endAndSettlement()
         {
             getSituation=4;
 
-            gameOverDialogWindow->setDialogText("蓝方获胜！");
+            gameOverDialogWindow->setDialogText("\n蓝方获胜！\n                  ");
             gameOverDialogWindow->exec();
         }
         else if(game->gameOver()==3)
         {
 
             getSituation=4;
-            gameOverDialogWindow->setDialogText("橙方获胜！");
+            gameOverDialogWindow->setDialogText("\n橙方获胜！\n                  ");
             gameOverDialogWindow->exec();
         }
         else if(game->gameOver()==1)
         {
 
             getSituation=4;
-            gameOverDialogWindow->setDialogText("平局");
+            gameOverDialogWindow->setDialogText("\n平局。\n                  ");
             gameOverDialogWindow->exec();
         }
 

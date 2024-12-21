@@ -81,6 +81,8 @@ MainWindow::MainWindow(QWidget *parent)
     dialog11 = new gridSizeDialog(this);
     dialog12 = new gridSizeDialog(this);
     dialog13 = new gridSizeDialog(this);
+    dialog14 = new gridSizeDialog(this);
+    dialog14->setValue(5);
     dialog21 = new gridSizeDialog(this);
     dialog21->setCheckBoxVisible(false);
 
@@ -88,6 +90,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(dialog11, &gridSizeDialog::accepted, this, [this]() { openGamePage(dialog11 ,InitialState::human, Difficulty::simple); });
     connect(dialog12, &gridSizeDialog::accepted, this, [this]() { openGamePage(dialog12 ,InitialState::human, Difficulty::medium); });
     connect(dialog13, &gridSizeDialog::accepted, this, [this]() { openGamePage(dialog13 ,InitialState::human, Difficulty::hard); });
+    connect(dialog14, &gridSizeDialog::accepted, this, [this]() { openGamePage(dialog14 ,InitialState::human, Difficulty::hard); });
     connect(dialog21, &gridSizeDialog::accepted, this, [this]() { openGamePage(dialog21 ,InitialState::player1, Difficulty::medium); });
 
    // connect(ui->selectAvatarBtn, &QPushButton::clicked, this, &MainWindow::on_selectAvatarBtn_clicked);

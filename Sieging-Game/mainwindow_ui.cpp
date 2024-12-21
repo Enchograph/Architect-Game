@@ -100,9 +100,13 @@ void MainWindow::on_loginBtn_2_clicked() { switchPage(ui->loginPage); }
 void MainWindow::on_settingsBtn_2_clicked() { switchPage(ui->settingPage); }
 void MainWindow::on_aboutBtn_2_clicked() { switchPage(ui->aboutPage); }
 
+
+void MainWindow::on_ruleBtn_clicked() { switchPage(ui->aboutPage); }
+void MainWindow::on_ruleBtn_2_clicked() { switchPage(ui->aboutPage); }
+
 void MainWindow::on_pushButton_16_clicked(){ dialog11->exec(); }
 void MainWindow::on_pushButton_17_clicked(){ dialog12->exec(); }
 void MainWindow::on_pushButton_18_clicked(){ dialog13->exec(); }
 void MainWindow::on_pushButton_19_clicked(){ dialog21->exec(); }
-void MainWindow::on_pushCowButton_clicked(){ dialog13->exec(); }
+void MainWindow::on_pushCowButton_clicked(){ dialog14->exec(); }
 

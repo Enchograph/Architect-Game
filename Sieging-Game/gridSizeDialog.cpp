@@ -46,3 +46,8 @@ void gridSizeDialog::on_horizontalSlider_valueChanged(int value)
 {
     ui->label->setText("请选择棋盘路数: " + QString::number(value));
 }
+
+void gridSizeDialog::setValue(int value)
+{
+    ui->horizontalSlider->setValue(value);
+}
