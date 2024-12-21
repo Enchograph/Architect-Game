@@ -55,6 +55,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     gifs.qrc \
+    icon.qrc \
     images.qrc \
     qqGifs.qrc
 
@@ -62,3 +63,6 @@ RESOURCES += \
 DISTFILES += \
     GridSizeDialog.qml \
     GridSizeDialogForm.ui.qml
+
+RC_ICONS = resources/icon.ico
+
