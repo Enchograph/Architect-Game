@@ -3,7 +3,8 @@
 
 #include <QString>
 
-struct UserInformation {
+struct UserInformation
+{
     QString currentUserName;
     QString currentUid;
     int currentWinNum;
@@ -28,7 +29,7 @@ enum InitialState
 
 enum Difficulty
 {
-  simple,
+    simple,
     medium,
     hard
 };
@@ -37,13 +38,13 @@ struct Edge
 {
     int x;
     int y;
-    Color color=white;
-    int turnsAfterSelected=0;
+    Color color = white;
+    int turnsAfterSelected = 0;
 };
 
 struct UnselectedEdge
 {
-    Edge * theEdgeLefted;
+    Edge *theEdgeLefted;
     int num;
 };
 

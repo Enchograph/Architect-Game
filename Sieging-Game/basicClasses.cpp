@@ -1,10 +1,5 @@
 #include "basicClasses.h"
 
-#include <iostream>
-
-using std::cout;
-using std::endl;
-
 Cell::Cell(Edge *topE, Edge *leftE, Edge *rightE, Edge *bottomE, int x1, int y1)
 {
     topEdge = topE;

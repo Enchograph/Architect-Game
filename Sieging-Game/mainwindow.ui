@@ -19,6 +19,9 @@
   <property name="windowTitle">
    <string>筑城者</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 11pt &quot;.苹方-简&quot;;</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
@@ -69,7 +72,7 @@
        </size>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">font: 25 10pt &quot;等线&quot;;</string>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_8">
        <property name="leftMargin">
@@ -366,7 +369,7 @@ border-right: none;
 background-color: rgb(255, 255, 255);}</string>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="beginPage">
        <property name="styleSheet">
@@ -1058,7 +1061,7 @@ background-color: rgb(255, 255, 255);}</string>
                    </size>
                   </property>
                   <property name="text">
-                   <string>还不了解游戏规则？点击这里！</string>
+                   <string>游戏规则？</string>
                   </property>
                  </widget>
                 </item>
@@ -1266,7 +1269,7 @@ background-color: rgb(255, 255, 255);}</string>
                    </size>
                   </property>
                   <property name="text">
-                   <string>还不了解游戏规则？点击这里！</string>
+                   <string>游戏规则？</string>
                   </property>
                  </widget>
                 </item>
@@ -2043,6 +2046,9 @@ background-color: rgb(255, 255, 255);}</string>
                    <property name="text">
                     <string>您尚未登录</string>
                    </property>
+                   <property name="alignment">
+                    <set>Qt::AlignCenter</set>
+                   </property>
                   </widget>
                  </item>
                  <item>
@@ -2188,15 +2194,48 @@ background-color: rgb(255, 255, 255);}</string>
                   <property name="text">
                    <string>游戏名《筑城者》。
 
-城有四围，围边筑城。
-双方先后选边，全边者得城加分，多走一步。
-
+城有四边，围边筑城。
+双方先后选边，率先围上某格的第四条边者
+得此格，并且可以多走一步。
 结算时城多者胜。
 
-希望你能从中收获乐趣！</string>
+游戏具有三种不同难度的AI逻辑以及双人对战模式，
+您可以通过注册、登录账号保存自己的游戏数据。
+账户的头像、昵称等亦可由您个性化设置。
+
+希望您能从中收获乐趣！</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_36">
+                  <property name="orientation">
+                   <enum>Qt::Vertical</enum>
+                  </property>
+                  <property name="sizeType">
+                   <enum>QSizePolicy::Fixed</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_4">
+                  <property name="styleSheet">
+                   <string notr="true">font: 12pt &quot;华文中宋&quot;;</string>
+                  </property>
+                  <property name="text">
+                   <string>计算机类2024级陈宏宇</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                   </property>
                  </widget>
                 </item>
@@ -2316,13 +2355,13 @@ background-color: rgb(255, 255, 255);}</string>
 城有四边，围边筑城。
 双方先后选边，率先围上某格的第四条边者
 得此格，并且可以多走一步。
-
 结算时城多者胜。
 
 游戏具有三种不同难度的AI逻辑以及双人对战模式，
 您可以通过注册、登录账号保存自己的游戏数据。
+账户的头像、昵称等亦可由您个性化设置。
 
-希望你能从中收获乐趣！</string>
+希望您能从中收获乐趣！</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
