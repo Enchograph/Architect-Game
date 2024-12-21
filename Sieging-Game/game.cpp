@@ -1,6 +1,5 @@
 #include "game.h"
 
-
 Game::Game(int width1, int height1, InitialState initialState1, Difficulty difficulty1)
 {
     width = width1;
@@ -47,6 +46,8 @@ Game::Game(int width1, int height1, InitialState initialState1, Difficulty diffi
         }
     }
 
+    // 初始化完毕
+
     if (getInitialState() == comptr)
     {
         Edge *nextStep = aiLogic(getDifficulty());
@@ -66,7 +67,7 @@ void Game::selectEdge(int x, int y, Color player)
         {
             for (int y1 = 0; y1 < width - 1; y1++)
             {
-                if (edgeSituation[x1][y1].color!=white)
+                if (edgeSituation[x1][y1].color != white)
                 {
                     edgeSituation[x1][y1].turnsAfterSelected++;
                 }
@@ -76,7 +77,7 @@ void Game::selectEdge(int x, int y, Color player)
         {
             for (int y1 = 0; y1 < width; y1++)
             {
-                if (edgeSituation[x1][y1].color!=white)
+                if (edgeSituation[x1][y1].color != white)
                 {
                     edgeSituation[x1][y1].turnsAfterSelected++;
                 }
@@ -87,7 +88,7 @@ void Game::selectEdge(int x, int y, Color player)
     checkCell(x, y, player);
 }
 
-void Game::checkAndChange(int x, int y, Color player)
+void Game::checkAndChange(int x, int y, Color player) // 检查此格是否被围成，若围成则给予额外回合或使得游戏结束。
 {
     if (cellSituation[x][y].check(player))
     {
@@ -168,53 +169,14 @@ short Game::gameOver()
 {
     if (countPlayerCells(blue) > countPlayerCells(orange))
     {
-        return 2; //蓝方获胜
-
+        return 2; // 蓝方获胜
     }
     else if (countPlayerCells(blue) < countPlayerCells(orange))
     {
-        return 3; //橙方获胜
+        return 3; // 橙方获胜
     }
     else
     {
-        return 1; //平局
-    }
-}
-
-void Game::reset()
-{
-
-    cellSituation.resize(height - 1, std::vector<Cell>(width - 1));
-    edgeSituation.resize(2 * height - 1, std::vector<Edge>(width));
-    for (int x1 = 0; x1 < 2 * height - 1; x1++) // 边初始化
-    {
-        if (x1 % 2 == 0) // 横线
-        {
-            for (int y1 = 0; y1 < width - 1; y1++)
-            {
-                edgeSituation[x1][y1].x = x1;
-                edgeSituation[x1][y1].y = y1;
-            }
-        }
-        if (x1 % 2 == 1) // 竖线
-        {
-            for (int y1 = 0; y1 < width; y1++)
-            {
-                edgeSituation[x1][y1].x = x1;
-                edgeSituation[x1][y1].y = y1;
-            }
-        }
-    }
-    for (int x1 = 0; x1 < height - 1; x1++) // 格初始化
-    {
-        for (int y1 = 0; y1 < width - 1; y1++)
-        {
-            cellSituation[x1][y1].x = x1;
-            cellSituation[x1][y1].y = y1;
-            cellSituation[x1][y1].topEdge = &edgeSituation[2 * x1][y1];
-            cellSituation[x1][y1].leftEdge = &edgeSituation[2 * x1 + 1][y1];
-            cellSituation[x1][y1].rightEdge = &edgeSituation[2 * x1 + 1][y1 + 1];
-            cellSituation[x1][y1].bottomEdge = &edgeSituation[2 * x1 + 2][y1];
-        }
+        return 1; // 平局
     }
 }

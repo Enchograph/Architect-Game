@@ -12,7 +12,7 @@ class gameOverDialog : public QDialog
 
 public:
     explicit gameOverDialog(QWidget *parent = nullptr);
-    void setDialogText(const QString &text);  // 设置对话框显示的文字
+    void setDialogText(const QString &text);
 
 signals:
     void dialogClosed();

@@ -4,13 +4,6 @@
 #include <QMainWindow>
 #include <QPropertyAnimation>
 
-
-#include "game.h"
-#include "gameBoard.h"
-#include "gridSizeDialog.h"
-#include "cropWindow.h"
-#include "userManager.h"
-
 #include <QScreen>
 #include <QGuiApplication>
 #include <QStackedWidget>
@@ -27,11 +20,17 @@
 
 #include <QStandardPaths>
 
-
-
+#include "game.h"
+#include "gameBoard.h"
+#include "gridSizeDialog.h"
+#include "cropWindow.h"
+#include "userManager.h"
 
 QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
+namespace Ui
+{
+    class MainWindow;
+}
 QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
@@ -57,65 +56,57 @@ private slots:
     void on_aboutBtn_2_clicked();
     void on_ruleBtn_clicked();
     void on_ruleBtn_2_clicked();
+
+    // 游戏开始按钮
     void on_pushButton_16_clicked();
     void on_pushButton_17_clicked();
     void on_pushButton_18_clicked();
     void on_pushButton_19_clicked();
     void on_pushCowButton_clicked();
-    void on_selectAvatarBtn_clicked();       // 按钮点击槽函数
-    void onImageCropped(const QPixmap &croppedPixmap);  // 裁剪完成槽函数
-    void onEndGameButtonClicked(); // 结束游戏按钮点击事件
-    void onGameOverDialogClosed(); // 游戏结束对话框关闭时的操作
+
+    // 上传头像相关按钮
+    void on_selectAvatarBtn_clicked();
+    void onImageCropped(const QPixmap &croppedPixmap);
+
+    // 游戏结算对话框相关按钮
+    void onEndGameButtonClicked();
+    void onGameOverDialogClosed();
 
 private:
     Ui::MainWindow *ui;
-    void switchPage(QWidget *targetPage); // 页面切换函数
-    int getPageIndex(QWidget *page); // 获取页面的索引
+
+    void switchPage(QWidget *targetPage);
+    int getPageIndex(QWidget *page);
     void updatePageLayout(int pageIndex);
 
-
-
     Game *game;
-    gameBoard *board;
+    gameBoard *board; // 这个应该没用了
 
-    gameBoard *boardWidget;     // gameBoard 实例
-    gridSizeDialog *gridDialog; // gridSizeDialog 实例
+    gameBoard *boardWidget;
+    gridSizeDialog *gridDialog;
 
-    void openGamePage(const gridSizeDialog * gridDialog,InitialState initialState,Difficulty difficulty); // 处理开始游戏逻辑
+    UserInformation *currentUser;
+    UserInformation acturalCurrentUser;
 
-    gridSizeDialog * dialog11;
-    gridSizeDialog * dialog12;
-    gridSizeDialog * dialog13;
-    gridSizeDialog * dialog14;
-    gridSizeDialog * dialog21;
-    gridSizeDialog * dialog22;
-    gridSizeDialog * dialog23;
+    gridSizeDialog *dialog11;
+    gridSizeDialog *dialog12;
+    gridSizeDialog *dialog13;
+    gridSizeDialog *dialog14;
+    gridSizeDialog *dialog21;
+    gridSizeDialog *dialog22;
+    gridSizeDialog *dialog23;
 
-   UserInformation * currentUser;
-   UserInformation acturalCurrentUser;
+    void openGamePage(const gridSizeDialog *gridDialog, InitialState initialState, Difficulty difficulty); // 处理开始游戏逻辑
 
+    void goToAccountPage(); // 去空用户页和去实际用户页的选择
 
+    void setupConnections();
 
+    void updateUserInformation();
 
-
-
-
-   void goToAccountPage();
-
-        void setupConnections();
-
-        void updateUserInformation();
-
-
-
-
-        void adjustGifSize(QMovie *movie,QLabel * gifLabel) ;
-            //void resizeEvent(QResizeEvent *event) ;
-                void letGifBegin(QMovie *movie,QLabel * gifLabel);
-                void resizeGif(QLabel * gifLabel);
-
-
-
+    void adjustGifSize(QMovie *movie, QLabel *gifLabel);
+    void letGifBegin(QMovie *movie, QLabel *gifLabel);
+    void resizeGif(QLabel *gifLabel);
 };
 
 #endif // MAINWINDOW_H

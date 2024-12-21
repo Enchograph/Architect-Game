@@ -14,13 +14,9 @@ void gameBoard::loadImages()
 
 void gameBoard::resizeEvent(QResizeEvent *event)
 {
-    setGeometry((parentWidget()->width() - updateSizes()*(5 * game->getWidth() + 1)) / 2, (parentWidget()->height() - updateSizes()*(5 * game->getHeight() + 1)) / 2, parentWidget()->width(),parentWidget()->height());
-    //setGeometry(0,0, width(),height());
+    setGeometry((parentWidget()->width() - updateSizes() * (5 * game->getWidth() + 1)) / 2, (parentWidget()->height() - updateSizes() * (5 * game->getHeight() + 1)) / 2, parentWidget()->width(), parentWidget()->height()); // 更新棋盘内元素的大小
 
-
-
-     // 更新棋盘内元素的大小
-    update();      // 触发重新绘制
+    update();                    // 触发重新绘制
     QWidget::resizeEvent(event); // 调用父类处理
 }
 
@@ -35,19 +31,15 @@ double gameBoard::updateSizes()
 void gameBoard::paintEvent(QPaintEvent *event)
 {
     QPainter painter(this);
-    drawGameBoard(painter); // 绘制整个游戏界面
+    drawGameBoard(painter);
 }
 
 void gameBoard::drawGameBoard(QPainter &painter)
 {
-    // 先绘制边
     drawEdges(painter);
-
-    // 然后绘制方格
     drawSquares(painter);
 
-    qDebug()<<"paint once.";
-
+    qDebug() << "paint once.";
 }
 
 void gameBoard::drawEdges(QPainter &painter)
@@ -60,17 +52,17 @@ void gameBoard::drawEdges(QPainter &painter)
             {
                 Edge &edge = game->getEdge(x1, y1);
 
-                QPixmap edgePixmap;  // = edge.isSelected ? edgeSelectedPixmap : edgeUnselectedPixmap;
+                QPixmap edgePixmap;
 
-                if(edge.color==white)
+                if (edge.color == white)
                 {
                     edgePixmap = edgeWhitePixmap;
                 }
-                else if (edge.color==blue && edge.turnsAfterSelected==1)
+                else if (edge.color == blue && edge.turnsAfterSelected == 1)
                 {
                     edgePixmap = edgeBluePixmap;
                 }
-                else if (edge.color==orange && edge.turnsAfterSelected==1)
+                else if (edge.color == orange && edge.turnsAfterSelected == 1)
                 {
                     edgePixmap = edgeOrangePixmap;
                 }
@@ -80,10 +72,9 @@ void gameBoard::drawEdges(QPainter &painter)
                 }
 
                 QTransform transform;
-                transform.rotate(90);                                      // 旋转图片 90 度
-                QPixmap rotatedPixmap = edgePixmap.transformed(transform); // 获取旋转后的图片
+                transform.rotate(90);
+                QPixmap rotatedPixmap = edgePixmap.transformed(transform);
 
-                // 绘制横向边（旋转后的图片）
                 painter.drawPixmap(y1 * 5 * size + size, x1 * 2.5 * size, 4 * size, size, rotatedPixmap);
             }
         }
@@ -93,17 +84,17 @@ void gameBoard::drawEdges(QPainter &painter)
             {
                 Edge &edge = game->getEdge(x1, y1);
 
-                QPixmap edgePixmap;  // = edge.isSelected ? edgeSelectedPixmap : edgeUnselectedPixmap;
+                QPixmap edgePixmap;
 
-                if(edge.color==white)
+                if (edge.color == white)
                 {
                     edgePixmap = edgeWhitePixmap;
                 }
-                else if (edge.color==blue && edge.turnsAfterSelected==1)
+                else if (edge.color == blue && edge.turnsAfterSelected == 1)
                 {
                     edgePixmap = edgeBluePixmap;
                 }
-                else if (edge.color==orange && edge.turnsAfterSelected==1)
+                else if (edge.color == orange && edge.turnsAfterSelected == 1)
                 {
                     edgePixmap = edgeOrangePixmap;
                 }
@@ -111,7 +102,6 @@ void gameBoard::drawEdges(QPainter &painter)
                 {
                     edgePixmap = edgeBlackPixmap;
                 }
-
 
                 painter.drawPixmap(y1 * 5 * size, (x1 - 1) / 2 * 5 * size + size, size, 4 * size, edgePixmap);
             }
@@ -121,13 +111,12 @@ void gameBoard::drawEdges(QPainter &painter)
 
 void gameBoard::drawSquares(QPainter &painter)
 {
-    for (int x1 = 0; x1 < game->getHeight() - 1; x1++) // 遍历每一个格
+    for (int x1 = 0; x1 < game->getHeight() - 1; x1++)
     {
         for (int y1 = 0; y1 < game->getWidth() - 1; y1++)
         {
             Cell &cell = game->getCell(x1, y1);
 
-            // 根据方格的颜色选择相应的图片
             QPixmap squarePixmap;
             switch (cell.color)
             {
@@ -146,9 +135,7 @@ void gameBoard::drawSquares(QPainter &painter)
                 break;
             }
 
-            // 绘制方格
             painter.drawPixmap(y1 * 5 * size + size, x1 * 5 * size + size, 4 * size, 4 * size, squarePixmap);
         }
     }
 }
-

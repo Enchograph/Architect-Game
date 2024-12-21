@@ -369,7 +369,7 @@ border-right: none;
 background-color: rgb(255, 255, 255);}</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>5</number>
       </property>
       <widget class="QWidget" name="beginPage">
        <property name="styleSheet">
@@ -2203,7 +2203,7 @@ background-color: rgb(255, 255, 255);}</string>
 您可以通过注册、登录账号保存自己的游戏数据。
 账户的头像、昵称等亦可由您个性化设置。
 
-希望您能从中收获乐趣！</string>
+希望你能从中收获乐趣！</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -2361,7 +2361,7 @@ background-color: rgb(255, 255, 255);}</string>
 您可以通过注册、登录账号保存自己的游戏数据。
 账户的头像、昵称等亦可由您个性化设置。
 
-希望您能从中收获乐趣！</string>
+希望你能从中收获乐趣！</string>
                   </property>
                   <property name="alignment">
                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>

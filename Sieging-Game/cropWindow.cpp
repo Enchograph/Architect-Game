@@ -90,21 +90,6 @@ void CropWindow::mouseReleaseEvent(QMouseEvent *event)
     dragging = false;
 }
 
-QPixmap CropWindow::getCroppedImage()
-{
-    int top =
-        (selectionRect.left() - (600 - image.width()) / 2) / scaleFactor;
-    int left =
-        (selectionRect.top() - (600 - image.height()) / 2) / scaleFactor;
-    // 将裁剪框的坐标转换回原始图片的坐标
-    QRect originalRect(top, left,
-                       selectionRect.width() / scaleFactor,
-                       selectionRect.height() / scaleFactor);
-
-    // 返回原始图片中对应裁剪区域的 QPixmap
-    return originalImage.copy(originalRect);
-}
-
 void CropWindow::wheelEvent(QWheelEvent *event)
 {
     int delta = event->angleDelta().y(); // 获取滚轮的滚动量
@@ -128,7 +113,7 @@ void CropWindow::wheelEvent(QWheelEvent *event)
         }
     }
 
-    selectionRect.moveCenter(center);
+    selectionRect.moveCenter(center); // 保险起见多加一句中心点检查
 
     // 限制裁剪框在图片范围内
     selectionRect.moveLeft(qMax(selectionRect.left(), (600 - image.width()) / 2));
@@ -136,4 +121,19 @@ void CropWindow::wheelEvent(QWheelEvent *event)
     selectionRect.moveRight(qMin(selectionRect.right(), (600 + image.width()) / 2));
     selectionRect.moveBottom(qMin(selectionRect.bottom(), (600 + image.height()) / 2));
     update();
+}
+
+QPixmap CropWindow::getCroppedImage()
+{
+    int left =
+        (selectionRect.left() - (600 - image.width()) / 2) / scaleFactor;
+    int top =
+        (selectionRect.top() - (600 - image.height()) / 2) / scaleFactor;
+    // 将裁剪框的坐标转换回原始图片的坐标
+    QRect originalRect(left, top,
+                       selectionRect.width() / scaleFactor,
+                       selectionRect.height() / scaleFactor);
+
+    // 返回原始图片中对应裁剪区域的 QPixmap
+    return originalImage.copy(originalRect);
 }

@@ -25,21 +25,20 @@ public:
     explicit gameBoard(Game *gameInstance, QWidget *parent = nullptr);
     ~gameBoard();
 
-    short getSituation; //0表示正在进行游戏，1表示平局，2表示胜利，3表示失败，4表示双人对战模式结束。
-    gameOverDialog * gameOverDialogWindow;
+    short getSituation; // 0表示正在进行游戏，1表示平局，2表示胜利，3表示失败，4表示双人对战模式结束。
+    gameOverDialog *gameOverDialogWindow;
 
 protected:
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
-    void resizeEvent(QResizeEvent *event) override; // 添加resizeEvent
+    void resizeEvent(QResizeEvent *event) override;
 
 private:
-    Game *game;        // 游戏逻辑
-    void loadImages(); // 加载图片
+    Game *game;
+    void loadImages();
 
-    int size;           // 尺寸
-    double updateSizes(); // 更新方格和边的大小
-
+    int size; // 边的宽度/高度（px）。
+    double updateSizes();
 
     // 图片
     QPixmap squareEmptyPixmap;
@@ -54,14 +53,11 @@ private:
     void drawGameBoard(QPainter &painter);
     void drawEdges(QPainter &painter);
     void drawSquares(QPainter &painter);
-    Edge selectEdgeByClicking (int x,int y,QMouseEvent *event);
+    Edge selectEdgeByClicking(int x, int y, QMouseEvent *event);
     void nextStepFuction();
     void aiStep(Color color);
     void endAndSettlement();
     void sleep(int time);
-
-
-
 };
 
 #endif // GAMEBOARD_H

@@ -8,24 +8,27 @@
 #include "basicClasses.h"
 #include "userManager.h"
 
+// 使用的是 JSON 文件来储存用户数据
 
-
-
-QString UserManager::encryptPassword(const QString &password) {
+QString UserManager::encryptPassword(const QString &password)
+{
     // 使用SHA-256加密密码
     return QCryptographicHash::hash(password.toUtf8(), QCryptographicHash::Sha256).toHex();
 }
 
-bool UserManager::loadUserData(QJsonArray &userArray) {
+bool UserManager::loadUserData(QJsonArray &userArray)
+{
     QFile file("userinfo.json");
-    if (!file.open(QIODevice::ReadOnly)) {
+    if (!file.open(QIODevice::ReadOnly))
+    {
         QMessageBox::warning(nullptr, "Error", "无法读取用户数据文件");
         return false;
     }
 
     QByteArray data = file.readAll();
     QJsonDocument doc = QJsonDocument::fromJson(data);
-    if (!doc.isArray()) {
+    if (!doc.isArray())
+    {
         QMessageBox::warning(nullptr, "Error", "账户信息文件格式不正确");
         return false;
     }
@@ -35,9 +38,11 @@ bool UserManager::loadUserData(QJsonArray &userArray) {
     return true;
 }
 
-void UserManager::saveUserData(const QJsonArray &userArray) {
+void UserManager::saveUserData(const QJsonArray &userArray)
+{
     QFile file("userinfo.json");
-    if (!file.open(QIODevice::WriteOnly)) {
+    if (!file.open(QIODevice::WriteOnly))
+    {
         QMessageBox::warning(nullptr, "Error", "无法写入用户数据文件");
         return;
     }
@@ -47,15 +52,19 @@ void UserManager::saveUserData(const QJsonArray &userArray) {
     file.close();
 }
 
-bool UserManager::isUsernameTaken(const QString &username) {
+bool UserManager::isUsernameTaken(const QString &username)
+{
     QJsonArray userArray;
-    if (!loadUserData(userArray)) {
+    if (!loadUserData(userArray))
+    {
         return false;
     }
 
-    for (const QJsonValue &value : userArray) {
+    for (const QJsonValue &value : userArray)
+    {
         QJsonObject userObject = value.toObject();
-        if (userObject["username"].toString() == username) {
+        if (userObject["username"].toString() == username)
+        {
             return true;
         }
     }
@@ -63,7 +72,8 @@ bool UserManager::isUsernameTaken(const QString &username) {
     return false;
 }
 
-void UserManager::registerUser(const QString &username, const QString &password) {
+void UserManager::registerUser(const QString &username, const QString &password)
+{
     QJsonArray userArray;
     loadUserData(userArray);
 
@@ -82,21 +92,24 @@ void UserManager::registerUser(const QString &username, const QString &password)
     saveUserData(userArray);
 }
 
-bool UserManager::loginUser(const QString &username, const QString &password, UserInformation * currentUser) {
+bool UserManager::loginUser(const QString &username, const QString &password, UserInformation *currentUser)
+{
 
     QJsonArray userArray;
-    if (!loadUserData(userArray)) {
+    if (!loadUserData(userArray))
+    {
         qDebug("loginUser() load error");
         return false;
     }
 
-    for (const QJsonValue &value : userArray) {
+    for (const QJsonValue &value : userArray)
+    {
         QJsonObject userObject = value.toObject();
         QString storedPassword = userObject["password"].toString();
         QString encryptedPassword = encryptPassword(password);
 
-        if (userObject["username"].toString() == username && encryptedPassword == storedPassword) {
-
+        if (userObject["username"].toString() == username && encryptedPassword == storedPassword)
+        {
 
             currentUser->currentUserName = username;
             currentUser->currentUid = userObject["uid"].toString();
@@ -111,22 +124,26 @@ bool UserManager::loginUser(const QString &username, const QString &password, Us
     return false;
 }
 
-void UserManager::storageUserInformation(UserInformation * currentUser) {
+void UserManager::storageUserInformation(UserInformation *currentUser)
+{
     qDebug("begin to store");
 
     QJsonArray userArray;
-    if (!loadUserData(userArray)) {
+    if (!loadUserData(userArray))
+    {
         qDebug("storageUserInformation() load error");
         return;
     }
 
     bool userFound = false;
-    for (int i = 0; i < userArray.size(); ++i) {
+    for (int i = 0; i < userArray.size(); ++i)
+    {
         QJsonObject userObject = userArray[i].toObject();
         QString storedUid = userObject["uid"].toString();
 
-        if (storedUid == currentUser->currentUid) {
-            qDebug("begin to store2");
+        if (storedUid == currentUser->currentUid)
+        {
+            qDebug("begin to store step 2");
 
             userObject["username"] = currentUser->currentUserName;
             userObject["uid"] = currentUser->currentUid;
@@ -136,23 +153,22 @@ void UserManager::storageUserInformation(UserInformation * currentUser) {
 
             qDebug("begin to store3");
 
-            userArray.replace(i, userObject);  // 替换原来的元素
+            userArray.replace(i, userObject); // 替换掉原来的元素
             userFound = true;
             break;
         }
     }
 
-    if (!userFound) {
-        qDebug("User not found in the array.");
-    } else {
+    // 确保更新之后的用户数据储存了回去
+    if (userFound)
+    {
+        saveUserData(userArray);
         qDebug("User information updated.");
     }
-
-    // 确保数据存储回去
-    if (userFound) {
-        saveUserData(userArray);
+    else
+    {
+        qDebug("User not found in the array.");
     }
 
     qDebug("storageUserInformation() completed.");
 }
-

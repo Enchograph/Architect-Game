@@ -28,6 +28,9 @@
      <height>40</height>
     </size>
    </property>
+   <property name="styleSheet">
+    <string notr="true">font: 8pt &quot;.苹方-简&quot;;</string>
+   </property>
    <property name="orientation">
     <enum>Qt::Horizontal</enum>
    </property>

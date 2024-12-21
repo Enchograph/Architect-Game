@@ -36,14 +36,11 @@ public:
 
     void selectEdge(int x, int y, Color player);
     void checkCell(int x, int y, Color player);
-    // void nextTurn();
     void checkAndChange(int x, int y, Color player);
     bool checkGameOver();
     int countPlayerCells(Color player) const;
     short gameOver();
-    void reset();
-    bool optionalGrid (int x,int y);
-
+    bool optionalGrid(int x, int y);
 
     Edge *simpleAiLogic();
     Edge *mediumAiLogic();

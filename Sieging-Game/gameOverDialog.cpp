@@ -5,7 +5,7 @@ gameOverDialog::gameOverDialog(QWidget *parent)
 {
     setWindowTitle("游戏结束！");
     gameOverDialogTextLabel = new QLabel("游戏结束！", this);
-    QFont font("",12);
+    QFont font("", 12);
     gameOverDialogTextLabel->setFont(font);
     gameOverDialogButton = new QPushButton("确定", this);
     setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
@@ -20,11 +20,11 @@ gameOverDialog::gameOverDialog(QWidget *parent)
 
 void gameOverDialog::setDialogText(const QString &text)
 {
-    gameOverDialogTextLabel->setText(text);  // 更新文本
+    gameOverDialogTextLabel->setText(text);
 }
 
 void gameOverDialog::onButtonClicked()
 {
-    emit dialogClosed();  // 发出对话框关闭信号
-    close();  // 关闭对话框
+    emit dialogClosed();
+    close();
 }
